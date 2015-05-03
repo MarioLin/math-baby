@@ -9,6 +9,15 @@
 import UIKit
 import CoreData
 
+// use DLog instead of log / println
+// all DLog lines will be automatically removed in production
+@inline(__always)
+func DLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, lineNumber: Int = __LINE__) {
+    #if DEBUG
+        println("\(function), line \(lineNumber): \(message)")
+    #endif
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
