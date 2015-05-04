@@ -22,4 +22,33 @@ class RequestHandler {
             }
         }
     }
+    
+    // retrieve the minimum score for getting into scoreboard
+    class func getMinimumScoreForScoreboard (#gametype: Int) -> Int {
+        return 0
+    }
+    
+    class func getTop10 () -> Bool {
+        return true
+    }
+    
+    class func getTop100 () -> Bool {
+        return true
+    }
+    
+    class func updatePersonalStatistic (#id: Int, score: Int, gametype: Int) -> Bool {
+        return true
+    }
+    
+    class func updateScoreboardWith (#name: String, id: Int, score: Int, gametype: Int) -> Bool {
+        return true
+    }
+    
+    private func sendRequest(requestType: Alamofire.Method, subURL: String, parameters: [String: AnyObject]? = nil) -> Bool {
+        return true
+    }
+    
+    private func formatURL(subURL: String) -> String {
+        return "https://mathbaby-backend.herokuapp.com/" + subURL;
+    }
 }

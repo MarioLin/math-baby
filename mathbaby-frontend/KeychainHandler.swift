@@ -10,6 +10,9 @@ import UIKit
 import Security
 import Locksmith
 
+// keys for key:value pair storage
+// kUserId: user id in database
+// kUsername: display name last used in ranking
 public enum KeychainKeys: String {
     case kUserId = "keyUserId"
     case kUsername = "keyUserName"
