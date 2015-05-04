@@ -7,16 +7,19 @@
 //
 
 import Foundation
-
 import Alamofire
 
 // sample code to check server status of backend
-public func try() {
-    Alamofire.request(.GET, "https://mathbaby-backend.herokuapp.com/serverStatus").responseJSON {
-        (_, _, data, _) in
-        if let json=data as? Dictionary<String,Int> {
-            let errCode = json["errCode"]
-            DLog("errCode is \(errCode!)");
+class RequestHandler {
+    
+    // call by RequestHandler.try()
+    class func try() {
+        Alamofire.request(.GET, "https://mathbaby-backend.herokuapp.com/serverStatus").responseJSON {
+            (_, _, data, _) in
+            if let json=data as? Dictionary<String,Int> {
+                let errCode = json["errCode"]
+                DLog("errCode is \(errCode!)");
+            }
         }
     }
 }
