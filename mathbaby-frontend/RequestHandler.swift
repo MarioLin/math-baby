@@ -9,23 +9,41 @@
 import Foundation
 import Alamofire
 
-// sample code to check server status of backend
 class RequestHandler {
     
-    // call by RequestHandler.try()
-    class func try() {
-        Alamofire.request(.GET, "https://mathbaby-backend.herokuapp.com/serverStatus").responseJSON {
-            (_, _, data, _) in
-            if let json=data as? Dictionary<String,Int> {
-                let errCode = json["errCode"]
-                DLog("errCode is \(errCode!)");
+    // this function is only for debugging purpose
+    #if DEBUG
+    class func printServerStatus() {
+        Alamofire.request(.GET, formatURL("serverStatus")).responseJSON {
+            (request, response, data, error) in
+            if error == nil {
+                if let json=data as? Dictionary<String,Int> {
+                    if let errCode = json["errCode"] {
+                        println("Remote server is available")
+                        return
+                    }
+                }
             }
+            println("Remote server is unavailable")
+            return
         }
     }
+    #endif
     
     // retrieve the minimum score for getting into scoreboard
-    class func getMinimumScoreForScoreboard (#gametype: Int) -> Int {
-        return 0
+    class func updateMinimumScoreForScoreboard () {
+        Alamofire.request(.GET, formatURL("fetchMinTopScore")).responseJSON {
+            (request, response, data, error) in
+            if error == nil {
+                if let json=data as? Dictionary<String,AnyObject> {
+                    if let entryScores = json["score"] as? Dictionary<Int, Int> {
+                        for (gametype, score) in entryScores {
+                            Singleton.sharedInstance.setMinimumScoreForGametype(gametype: gametype, score: score)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     class func getTop10 () -> Bool {
@@ -48,7 +66,7 @@ class RequestHandler {
         return true
     }
     
-    private func formatURL(subURL: String) -> String {
+    class private func formatURL(subURL: String) -> String {
         return "https://mathbaby-backend.herokuapp.com/" + subURL;
     }
 }
