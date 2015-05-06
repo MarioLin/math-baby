@@ -12,6 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        RequestHandler.printServerStatus()
+        RequestHandler.fetchMinimumScoreForScoreboard()
+        RequestHandler.fetchTop10(1)
+        RequestHandler.fetchTop100(1)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

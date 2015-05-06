@@ -45,6 +45,7 @@ class Singleton {
     private var _userid = -1
     private var _username = "my name"
     private var _minimumScoreForGametype = [Int: Int] ()
+    private var _topScoresForGametype = [Int: [TopPlayer]] ()
     
     // sets the corresponding minimum score for game type
     // only sets when game type is a valid value
@@ -56,18 +57,44 @@ class Singleton {
     
     // returns corresponding minimum score to enter scoreboard
     // if invalid gametype is passed as parameters, Int.max is returned
-    func getMinimumScoreForGametype(gametype:Int) -> Int? {
-        if let val = _minimumScoreForGametype[gametype] {
-            return val
-        } else if Gametype.isValidGametype(gametype) {
-            return 0
+    func getMinimumScoreForGametype(gametype:Int) -> Int {
+        if Gametype.isValidGametype(gametype) {
+            return _minimumScoreForGametype[gametype] ?? 0
         } else {
+            // this line should not be reached
+            DLog("Invalid gametype: \(gametype)")
             return Int.max
         }
     }
+    
+    // sets the corresponding minimum score for game type
+    // only sets when game type is a valid value
+    func setTopScoresForGametype(#gametype:Int, topPlayers:[TopPlayer]) {
+        if Gametype.isValidGametype(gametype) {
+            _topScoresForGametype[gametype] = topPlayers
+        }
+    }
+    
+    // returns corresponding minimum score to enter scoreboard
+    // if invalid gametype is passed as parameters, Int.max is returned
+    func getTopScoresForGametype(gametype:Int) -> [TopPlayer] {
+        return _topScoresForGametype[gametype] ?? []
+    }
+    
     
     class func store () {
         KeychainHandler.store(KeychainKeys.kUserId, value: String(Singleton.sharedInstance._userid))
         KeychainHandler.store(KeychainKeys.kUsername, value: Singleton.sharedInstance._username)
     }
+    
+    /*
+    ==============================================================================
+    =============================== DEBUGGING CODE ===============================
+    ==============================================================================
+    */
+    #if DEBUG
+    class func printMinimumScoreDictionary() {
+        println("minimum entry score: \(Singleton.sharedInstance._minimumScoreForGametype)")
+    }
+    #endif
 }
