@@ -49,12 +49,26 @@ class RequestHandler {
         }
     }
     
-    class func updatePersonalStatistic (#id: Int, score: Int, gametype: Int) -> Bool {
-        return true
+    class func updatePersonalStatistic (score: Int, gametype: Int) {
+        sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["uid": Singleton.sharedInstance.uid, "score": score, "level": gametype]) {
+            (json) in
+            if Singleton.sharedInstance.uid == -1 {
+                if let newUid = json["uid"] as? Int {
+                    Singleton.sharedInstance.uid = newUid
+                }
+            }
+        }
     }
     
-    class func updateScoreboardWith (#name: String, id: Int, score: Int, gametype: Int) -> Bool {
-        return true
+    class func updateScoreboardWith (#name: String, score: Int, gametype: Int) {
+        sendRequest(.POST, suburl: "updateTopPlayers", parameters: ["name": name, "uid": Singleton.sharedInstance.uid, "score": score, "level": gametype]) {
+            (json) in
+            if Singleton.sharedInstance.uid == -1 {
+                if let newUid = json["uid"] as? Int {
+                    Singleton.sharedInstance.uid = newUid
+                }
+            }
+        }
     }
     
     private func sendRequest(requestType: Alamofire.Method, subURL: String, parameters: [String: AnyObject]? = nil) -> Bool {

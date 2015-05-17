@@ -35,14 +35,14 @@ class Singleton {
     
     init() {
         if let id = KeychainHandler.load(KeychainKeys.kUserId)?.toInt() {
-            _userid = id
+            uid = id
         }
         if let name = KeychainHandler.load(KeychainKeys.kUserId) {
             _username = name
         }
     }
     
-    private var _userid = -1
+    var uid = -1
     private var _username = "my name"
     private var _minimumScoreForGametype = [Int: Int] ()
     private var _topScoresForGametype = [Int: [TopPlayer]] ()
@@ -83,7 +83,7 @@ class Singleton {
     
     
     class func store () {
-        KeychainHandler.store(KeychainKeys.kUserId, value: String(Singleton.sharedInstance._userid))
+        KeychainHandler.store(KeychainKeys.kUserId, value: String(Singleton.sharedInstance.uid))
         KeychainHandler.store(KeychainKeys.kUsername, value: Singleton.sharedInstance._username)
     }
     

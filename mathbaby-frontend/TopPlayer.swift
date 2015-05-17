@@ -21,5 +21,4 @@ struct TopPlayer: Printable {
     var description: String {
         return "TopPlayer(uid: \(uid), name: \(name), score: \(score))"
     }
-    
 }
