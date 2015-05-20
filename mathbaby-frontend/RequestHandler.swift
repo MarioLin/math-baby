@@ -29,7 +29,7 @@ class RequestHandler {
     // method: .GET .POST
     // suburl: destination to send request
     // parameters: json parameters
-    // callback: the callback function to be called on after receiving the json response
+    // callback: the callback function to be called on after receiving the json response, callback is only called when errCode is 0
     class private func sendRequest(method: Alamofire.Method, suburl: String, parameters:[String:AnyObject]=[:], callback:([String:AnyObject])->()) {
         Alamofire.request(method, formatURL(suburl), parameters: parameters).responseJSON {
             (request, response, data, error) in
