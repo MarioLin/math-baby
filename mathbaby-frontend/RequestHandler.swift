@@ -45,26 +45,5 @@ class RequestHandler {
             return DLog("\(method.rawValue) \(suburl) -> \(error!)")
         }
     }
-    
-    /*
-    ==============================================================================
-    =============================== DEBUGGING CODE ===============================
-    ==============================================================================
-    */
-    #if DEBUG
-    class func printServerStatus() {
-        Alamofire.request(.GET, formatURL("serverStatus")).responseJSON {
-            (request, response, data, error) in
-            let remote = self.formatURL("")
-            if error == nil {
-                if let json=data as? Dictionary<String,Int> {
-                    if let errCode = json["errCode"] {
-                        return println("Server: \(remote) is available")
-                    }
-                }
-            }
-            return println("Server: \(remote) is unavailable")
-        }
-    }
-    #endif
+
 }

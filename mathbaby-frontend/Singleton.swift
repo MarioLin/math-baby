@@ -33,7 +33,7 @@ enum Gametype : Int {
 
 class Singleton {
     
-    static private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    static private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
     
     /*
         Insert a new game record into permanent storage
@@ -44,7 +44,7 @@ class Singleton {
         return GameRecord on success, nil on failure
     */
     class func storeGameRecord(#score: Int, type: Int) -> GameRecord? {
-        if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext!) as? GameRecord {
+        if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext) as? GameRecord {
             newRecord.time = NSDate()
             newRecord.score = score
             newRecord.type = type
@@ -57,7 +57,7 @@ class Singleton {
         return all game records as an array
     */
     class func loadGameRecords() -> [GameRecord] {
-        return managedObjectContext!.executeFetchRequest(NSFetchRequest(entityName: "GameRecord"), error: nil) as! [GameRecord]
+        return managedObjectContext.executeFetchRequest(NSFetchRequest(entityName: "GameRecord"), error: nil) as! [GameRecord]
     }
     
     /*
