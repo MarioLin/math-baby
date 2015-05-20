@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 enum Gametype : Int {
     case kGTAdd = 3
@@ -31,60 +33,31 @@ enum Gametype : Int {
 
 class Singleton {
     
-    static let sharedInstance = Singleton()
+    static private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    init() {
-        if let id = KeychainHandler.load(KeychainKeys.kUserId)?.toInt() {
-            uid = id
+    /*
+        Insert a new game record into permanent storage
+    
+        score: the score of that game
+        type: the type of game identified
+    
+        return GameRecord on success, nil on failure
+    */
+    class func storeGameRecord(#score: Int, type: Int) -> GameRecord? {
+        if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext!) as? GameRecord {
+            newRecord.time = NSDate()
+            newRecord.score = score
+            newRecord.type = type
+            return newRecord
         }
-        if let name = KeychainHandler.load(KeychainKeys.kUserId) {
-            _username = name
-        }
+        return nil
     }
     
-    var uid = -1
-    private var _username = "my name"
-    private var _minimumScoreForGametype = [Int: Int] ()
-    private var _topScoresForGametype = [Int: [TopPlayer]] ()
-    
-    // sets the corresponding minimum score for game type
-    // only sets when game type is a valid value
-    func setMinimumScoreForGametype(#gametype:Int, score:Int) {
-        if Gametype.isValidGametype(gametype) {
-            _minimumScoreForGametype[gametype] = score
-        }
-    }
-    
-    // returns corresponding minimum score to enter scoreboard
-    // if invalid gametype is passed as parameters, Int.max is returned
-    func getMinimumScoreForGametype(gametype:Int) -> Int {
-        if Gametype.isValidGametype(gametype) {
-            return _minimumScoreForGametype[gametype] ?? 0
-        } else {
-            // this line should not be reached
-            DLog("Invalid gametype: \(gametype)")
-            return Int.max
-        }
-    }
-    
-    // sets the corresponding minimum score for game type
-    // only sets when game type is a valid value
-    func setTopScoresForGametype(#gametype:Int, topPlayers:[TopPlayer]) {
-        if Gametype.isValidGametype(gametype) {
-            _topScoresForGametype[gametype] = topPlayers
-        }
-    }
-    
-    // returns corresponding minimum score to enter scoreboard
-    // if invalid gametype is passed as parameters, Int.max is returned
-    func getTopScoresForGametype(gametype:Int) -> [TopPlayer] {
-        return _topScoresForGametype[gametype] ?? []
-    }
-    
-    
-    class func store () {
-        KeychainHandler.store(KeychainKeys.kUserId, value: String(Singleton.sharedInstance.uid))
-        KeychainHandler.store(KeychainKeys.kUsername, value: Singleton.sharedInstance._username)
+    /*
+        return all game records as an array
+    */
+    class func loadGameRecords() -> [GameRecord] {
+        return managedObjectContext!.executeFetchRequest(NSFetchRequest(entityName: "GameRecord"), error: nil) as! [GameRecord]
     }
     
     /*
@@ -93,8 +66,6 @@ class Singleton {
     ==============================================================================
     */
     #if DEBUG
-    class func printMinimumScoreDictionary() {
-        println("minimum entry score: \(Singleton.sharedInstance._minimumScoreForGametype)")
-    }
+
     #endif
 }

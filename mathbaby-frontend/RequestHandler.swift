@@ -11,63 +11,9 @@ import Alamofire
 
 class RequestHandler {
         
-    // retrieve the minimum score for getting into scoreboard
-    class func fetchMinimumScoreForScoreboard () {
-        sendRequest(.GET, suburl: "fetchMinTopScore") {
-            (json) in
-            if let entryScores = json["score"] as? Dictionary<String, Int> {
-                for (gametype, score) in entryScores {
-                    Singleton.sharedInstance.setMinimumScoreForGametype(gametype: gametype.toInt()!, score: score)
-                }
-            }
-        }
-    }
-    
-    class func fetchTop10 (gametype:Int) {
-        sendRequest(.GET, suburl: "fetchTop10", parameters: ["level": gametype]) {
-            (json) in
-            if let topPlayers = json["topPlayers"] as? [[String:AnyObject]] {
-                var topPlayersArray = [TopPlayer]()
-                for topPlayerDict in topPlayers {
-                    topPlayersArray.append(TopPlayer(dict: topPlayerDict))
-                }
-                Singleton.sharedInstance.setTopScoresForGametype(gametype: gametype, topPlayers: topPlayersArray)
-            }
-        }
-    }
-    
-    class func fetchTop100 (gametype:Int) {
-        sendRequest(.GET, suburl: "fetchTop100", parameters: ["level": gametype]) {
-            (json) in
-            if let topPlayers = json["topPlayers"] as? [[String:AnyObject]] {
-                var topPlayersArray = [TopPlayer]()
-                for topPlayerDict in topPlayers {
-                    topPlayersArray.append(TopPlayer(dict: topPlayerDict))
-                }
-                Singleton.sharedInstance.setTopScoresForGametype(gametype: gametype, topPlayers: topPlayersArray)
-            }
-        }
-    }
-    
     class func updatePersonalStatistic (score: Int, gametype: Int) {
-        sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["uid": Singleton.sharedInstance.uid, "score": score, "level": gametype]) {
+        sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["score": score, "level": gametype]) {
             (json) in
-            if Singleton.sharedInstance.uid == -1 {
-                if let newUid = json["uid"] as? Int {
-                    Singleton.sharedInstance.uid = newUid
-                }
-            }
-        }
-    }
-    
-    class func updateScoreboardWith (#name: String, score: Int, gametype: Int) {
-        sendRequest(.POST, suburl: "updateTopPlayers", parameters: ["name": name, "uid": Singleton.sharedInstance.uid, "score": score, "level": gametype]) {
-            (json) in
-            if Singleton.sharedInstance.uid == -1 {
-                if let newUid = json["uid"] as? Int {
-                    Singleton.sharedInstance.uid = newUid
-                }
-            }
         }
     }
     
