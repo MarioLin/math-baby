@@ -14,9 +14,9 @@ class GameRecord: NSManagedObject, Printable {
 
     @NSManaged var score: NSNumber
     @NSManaged var time: NSDate
-    @NSManaged var type: NSNumber
+    @NSManaged var gametype: NSNumber
 
     override var description: String {
-        return "GameRecord(type: \(type), score: \(score))"
+        return "SettingEntry(type: \(gametype), score: \(score))"
     }
 }
