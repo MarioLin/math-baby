@@ -27,6 +27,7 @@ struct Constants {
 }
 
 struct MBFonts {
-    static let systemFont = UIFont.systemFontOfSize(60)
-    static let systemFontBold = UIFont.boldSystemFontOfSize(60)
+    static let systemFontStandard = UIFont.systemFontOfSize(60)
+    static let systemFontStandardBold = UIFont.boldSystemFontOfSize(60)
+    static let systemFontLarge = UIFont.systemFontOfSize(75)
 }
