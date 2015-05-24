@@ -18,11 +18,11 @@ class MainMenuViewController: BaseViewController {
     }
     
     @IBAction func btnPlayTouchDown (AnyObject) {
-        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameTypeViewController))
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.SelectGameTypeViewController))
     }
     
     @IBAction func btnOptionTouchDown (AnyObject) {
-        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.optionMenuViewController))
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.StatisticsMenuViewController))
     }
     
     @IBAction func btnCreditsTouchDown (AnyObject) {

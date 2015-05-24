@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 
-class OptionMenuViewController: BaseViewController {
+class StatisticsMenuViewController: BaseViewController {
     
     @IBOutlet weak var btnOptOut: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateBtnOptOutText ()
+    }
+    
+    @IBAction func btnStatisticsTouchDown (AnyObject) {
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.UserStatisticsViewController))
     }
     
     @IBAction func btnOptOutTouchDown (AnyObject) {

@@ -18,9 +18,10 @@ struct Constants {
     
     struct kViewControllerIdentifier {
         static let mainMenuViewController = "MainMenuViewController"
-        static let optionMenuViewController = "OptionMenuViewController"
-        static let GameTypeViewController = "GameTypeViewController"
+        static let StatisticsMenuViewController = "StatisticsMenuViewController"
+        static let SelectGameTypeViewController = "SelectGameTypeViewController"
         static let CreditsViewController = "CreditsViewController"
+        static let UserStatisticsViewController = "UserStatisticsViewController"
     }
     
 }
