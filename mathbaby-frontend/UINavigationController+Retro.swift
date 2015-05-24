@@ -22,7 +22,7 @@ extension UINavigationController {
     self.pushViewController(viewController, animated: true)
     }
     
-    func popViewControllerRetro(viewController:UIViewController) {
+    func popViewControllerRetro() {
         var transition = CATransition();
         transition.duration = 0.25;
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -33,7 +33,7 @@ extension UINavigationController {
         self.popViewControllerAnimated(true)
     }
     
-    func popToRootViewControllerRetro(viewController:UIViewController) {
+    func popToRootViewControllerRetro() {
         var transition = CATransition();
         transition.duration = 0.25;
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)

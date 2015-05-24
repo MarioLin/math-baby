@@ -7,9 +7,26 @@
 //
 
 import Foundation
+import UIKit
 
-struct kUserDefault {
-    static let defaultValueAlreadySet = "kUserDefaultDefaultValueAlreadySet"
-    static let gametype = "kUserDefaultGametype"
-    static let surveyOptIn = "kUserDefaultSurveyOptIn"
+struct Constants {
+    
+    struct kUserDefault {
+        static let defaultValueAlreadySet = "kUserDefaultDefaultValueAlreadySet"
+        static let gametype = "kUserDefaultGametype"
+        static let statisticsOptOut = "kUserDefaultSurveyOptIn"
+    }
+    
+    struct kViewControllerIdentifier {
+        static let mainMenuViewController = "MainMenuViewController"
+        static let optionMenuViewController = "OptionMenuViewController"
+        static let GameTypeViewController = "GameTypeViewController"
+        static let CreditsViewController = "CreditsViewController"
+    }
+    
+}
+
+struct MBFonts {
+    static let systemFont = UIFont.systemFontOfSize(60)
+    static let systemFontBold = UIFont.boldSystemFontOfSize(60)
 }

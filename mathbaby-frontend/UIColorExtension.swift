@@ -15,4 +15,8 @@ extension UIColor {
         return UIColor(white: 0.9, alpha: 1.0)
     }
     
+    class func palePinkColor () -> UIColor {
+        return UIColor(red: 0.9, green: 0.35, blue: 0.35, alpha: 1.0)
+    }
+    
 }

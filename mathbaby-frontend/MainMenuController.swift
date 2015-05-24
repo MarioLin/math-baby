@@ -8,16 +8,25 @@
 
 import UIKit
 
-class MainMenuController: BaseViewController {
+class MainMenuViewController: BaseViewController {
     
-    @IBOutlet weak var testLabel: UILabel?
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnOption: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    @IBAction func btnPlayTouchDown (AnyObject) {
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameTypeViewController))
+    }
+    
+    @IBAction func btnOptionTouchDown (AnyObject) {
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.optionMenuViewController))
+    }
+    
+    @IBAction func btnCreditsTouchDown (AnyObject) {
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.CreditsViewController))
     }
 
 }

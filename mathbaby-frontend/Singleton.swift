@@ -33,13 +33,14 @@ class Singleton {
     
     static private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
     static private let userDefault = NSUserDefaults.standardUserDefaults()
+    static private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
     // Sets up the default values for all menus
     class func setUpNSUserDefault() {
-        if !userDefault.boolForKey(kUserDefault.defaultValueAlreadySet) {
-            userDefault.setBool(true, forKey: kUserDefault.defaultValueAlreadySet)
-            userDefault.setInteger(1, forKey: kUserDefault.gametype)
-            userDefault.setBool(true, forKey: kUserDefault.surveyOptIn)
+        if !userDefault.boolForKey(Constants.kUserDefault.defaultValueAlreadySet) {
+            userDefault.setBool(true, forKey: Constants.kUserDefault.defaultValueAlreadySet)
+            userDefault.setInteger(1, forKey: Constants.kUserDefault.gametype)
+            userDefault.setBool(false, forKey: Constants.kUserDefault.statisticsOptOut)
             userDefault.synchronize()
         }
     }
@@ -52,10 +53,10 @@ class Singleton {
     */
     class var gametype: Int {
         get {
-            return userDefault.integerForKey(kUserDefault.gametype)
+            return userDefault.integerForKey(Constants.kUserDefault.gametype)
         }
         set {
-            userDefault.setInteger(newValue, forKey: kUserDefault.gametype)
+            userDefault.setInteger(newValue, forKey: Constants.kUserDefault.gametype)
             userDefault.synchronize()
         }
     }
@@ -66,12 +67,12 @@ class Singleton {
         Value is retrieved from NSUserDefault in realtime when getter is called
         Value is stored into NSUserDefault and synchronized in realtime when setter is called
     */
-    class var surveyOptIn: Bool {
+    class var statisticsOptOut: Bool {
         get {
-            return userDefault.boolForKey(kUserDefault.surveyOptIn)
+            return userDefault.boolForKey(Constants.kUserDefault.statisticsOptOut)
         }
         set {
-            userDefault.setBool(newValue, forKey: kUserDefault.surveyOptIn)
+            userDefault.setBool(newValue, forKey: Constants.kUserDefault.statisticsOptOut)
             userDefault.synchronize()
         }
     }
@@ -85,8 +86,14 @@ class Singleton {
         return GameRecord on success, nil on failure
     */
     class func storeGameRecord(#score: Int, gametype: Int) -> GameRecord? {
+        let games = loadGameRecords()
+        for game in games {
+            if game.gametype == gametype {
+                game.score = score
+                return game
+            }
+        }
         if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext) as? GameRecord {
-            newRecord.time = NSDate()
             newRecord.score = score
             newRecord.gametype = gametype
             return newRecord
@@ -101,12 +108,8 @@ class Singleton {
         return managedObjectContext.executeFetchRequest(NSFetchRequest(entityName: "GameRecord"), error: nil) as! [GameRecord]
     }
     
-    /*
-    ==============================================================================
-    =============================== DEBUGGING CODE ===============================
-    ==============================================================================
-    */
-    #if DEBUG
-
-    #endif
+    class func instantiateViewControllerWithIdentifier(identifier: String) -> BaseViewController {
+        return storyboard.instantiateViewControllerWithIdentifier(identifier) as! BaseViewController
+    }
+    
 }

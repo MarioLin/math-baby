@@ -11,13 +11,13 @@ import Alamofire
 
 class RequestHandler {
         
-    class func updatePersonalStatistic (score: Int, gametype: Int) {
+    class func updatePersonalStatistic (#score: Int, gametype: Int) {
         sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["score": score, "level": gametype]) {
             (json) in
         }
     }
     
-    private func sendRequest(requestType: Alamofire.Method, subURL: String, parameters: [String: AnyObject]? = nil) -> Bool {
+    private func sendRequest(requestType: Alamofire.Method, _ subURL: String, _ parameters: [String: AnyObject]? = nil) -> Bool {
         return true
     }
     

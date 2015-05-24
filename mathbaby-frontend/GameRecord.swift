@@ -13,7 +13,6 @@ import CoreData
 class GameRecord: NSManagedObject, Printable {
 
     @NSManaged var score: NSNumber
-    @NSManaged var time: NSDate
     @NSManaged var gametype: NSNumber
 
     override var description: String {
