@@ -29,10 +29,10 @@ class OptionMenuViewController: BaseViewController {
     
     private func updateBtnOptOutText () {
         if !Singleton.statisticsOptOut {
-            btnOptOut.titleLabel?.font = MBFonts.systemFontStandard
+            btnOptOut.titleLabel?.font = UIFont.systemFontStandard
             btnOptOut.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
         } else {
-            btnOptOut.titleLabel?.font = MBFonts.systemFontStandardBold
+            btnOptOut.titleLabel?.font = UIFont.systemFontStandardBold
             btnOptOut.setTitleColor(UIColor.palePinkColor(), forState: UIControlState.Normal)
         }
     }

@@ -12,9 +12,17 @@ import UIKit
 class GameTypeViewController: BaseViewController {
     
     @IBOutlet var btnCollection:[UIButton]!
+    private var btnToTick = [UIButton:UILabel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for button in btnCollection {
+            let tickLabel = UILabel(frame: CGRectMake(button.frame.size.width*0.8, button.frame.size.height*0.5, button.frame.size.width, button.frame.size.height))
+            tickLabel.hidden = false
+            tickLabel.text = "✔"
+            btnToTick[button] = tickLabel
+            button.addSubview(tickLabel)
+        }
         updateButtonState ()
     }
     
@@ -33,12 +41,14 @@ class GameTypeViewController: BaseViewController {
     }
     
     private func updateButtonState () {
+        let gametype = Singleton.gametype
         for button in btnCollection {
-            let gametype = Singleton.gametype
             if gametype % button.tag == 0 {
-                button.titleLabel?.font = MBFonts.systemFontLarge
+                // type selected
+                btnToTick[button]?.hidden = false
             } else {
-                button.titleLabel?.font = MBFonts.systemFontStandard
+                // type disselected
+                btnToTick[button]?.hidden = true
             }
         }
     }

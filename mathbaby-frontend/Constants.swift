@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Constants {
     
@@ -24,10 +23,4 @@ struct Constants {
         static let CreditsViewController = "CreditsViewController"
     }
     
-}
-
-struct MBFonts {
-    static let systemFontStandard = UIFont.systemFontOfSize(60)
-    static let systemFontStandardBold = UIFont.boldSystemFontOfSize(60)
-    static let systemFontLarge = UIFont.systemFontOfSize(75)
 }
