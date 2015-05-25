@@ -11,11 +11,11 @@ import Alamofire
 
 class RequestHandler {
         
-    class func updatePersonalStatistic (#score: Int, gametype: Int) {
-        sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["score": score, "level": gametype]) {
-            (json) in
-        }
-    }
+//    class func updatePersonalStatistic (#score: Int, gametype: Int) {
+//        sendRequest(.POST, suburl: "updateUserStatistics", parameters: ["score": score, "level": gametype]) {
+//            (json) in
+//        }
+//    }
     
     private func sendRequest(requestType: Alamofire.Method, _ subURL: String, _ parameters: [String: AnyObject]? = nil) -> Bool {
         return true
@@ -30,7 +30,7 @@ class RequestHandler {
     // suburl: destination to send request
     // parameters: json parameters
     // callback: the callback function to be called on after receiving the json response, callback is only called when errCode is 0
-    class private func sendRequest(method: Alamofire.Method, suburl: String, parameters:[String:AnyObject]=[:], callback:([String:AnyObject])->()) {
+    private class func sendRequest(method: Alamofire.Method, suburl: String, parameters:[String:AnyObject]=[:], callback:([String:AnyObject])->()) {
         Alamofire.request(method, formatURL(suburl), parameters: parameters).responseJSON {
             (request, response, data, error) in
             if error == nil {
@@ -43,6 +43,38 @@ class RequestHandler {
                 }
             }
             return DLog("\(method.rawValue) \(suburl) -> \(error!)")
+        }
+    }
+    
+    class func sendGetRequest(#suburl: String, parameters:[String:AnyObject]=[:], callback:([String:AnyObject])->()) {
+        Alamofire.request(.GET, formatURL(suburl), parameters: parameters).responseJSON {
+            (request, response, data, error) in
+            if error == nil {
+                // this cast should always succeed
+                if let json=data as? [String:AnyObject] {
+                    if json["errCode"] as! Int == 0 {
+                        return callback(json)
+                    }
+                    return DLog("GET \(suburl) -> json = \(json)")
+                }
+            }
+            return DLog("GET \(suburl) -> \(error!)")
+        }
+    }
+    
+    class func sendPostRequest(#suburl: String, parameters:[String:AnyObject]=[:], callback:([String:AnyObject])->()) {
+        Alamofire.request(.POST, formatURL(suburl), parameters: parameters).responseJSON {
+            (request, response, data, error) in
+            if error == nil {
+                // this cast should always succeed
+                if let json=data as? [String:AnyObject] {
+                    if json["errCode"] as! Int == 0 {
+                        return callback(json)
+                    }
+                    return DLog("POST \(suburl) -> json = \(json)")
+                }
+            }
+            return DLog("POST \(suburl) -> \(error!)")
         }
     }
 

@@ -10,6 +10,10 @@ import Foundation
 
 struct Constants {
     
+    struct kNSNotification {
+        static let statisticsUpdate = "kNSNotificationStatisticsUpdate"
+    }
+    
     struct kUserDefault {
         static let defaultValueAlreadySet = "kUserDefaultDefaultValueAlreadySet"
         static let gametype = "kUserDefaultGametype"

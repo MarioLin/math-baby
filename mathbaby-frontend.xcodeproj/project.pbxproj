@@ -24,6 +24,7 @@
 		7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5E1B11BB2900F84906 /* UserStatisticsViewController.swift */; };
 		77C9A2A1B2A9FA464A257A91 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5257D79F4EE8E936E7FD108D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77CB60BB1B0873D800A2C6EB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB60BA1B0873D800A2C6EB /* LineChart.swift */; };
+		77CFE2B61B1332F500B49E17 /* NSNotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */; };
 		77D35F6E1AF950E000CD26ED /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D35F6D1AF950E000CD26ED /* Singleton.swift */; };
 		77D86DD61B0C28B700AAF4CD /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D86DD51B0C28B700AAF4CD /* GameRecord.swift */; };
 		77DA6A7A1B100FEC00215A5F /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA6A791B100FEC00215A5F /* CreditsViewController.swift */; };
@@ -68,6 +69,7 @@
 		77CB60BA1B0873D800A2C6EB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		77CE78651AF8912100CA4BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CE78661AF8912100CA4BD3 /* mathbabyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathbabyTests.swift; sourceTree = "<group>"; };
+		77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationCenterExtension.swift; sourceTree = "<group>"; };
 		77D35F6D1AF950E000CD26ED /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		77D86DD51B0C28B700AAF4CD /* GameRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
 		77DA6A791B100FEC00215A5F /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				776BEBEE1B0D86A20050BBD5 /* Constants.swift */,
 				776BEBE81B0D6CDE0050BBD5 /* UIColorExtension.swift */,
 				7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */,
+				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				776BEBE91B0D6CDE0050BBD5 /* UIColorExtension.swift in Sources */,
 				77319AEE1AF6E28F00C8CC09 /* RequestHandler.swift in Sources */,
 				77E1FD711B0F371900DA3B65 /* StatisticsMenuViewController.swift in Sources */,
+				77CFE2B61B1332F500B49E17 /* NSNotificationCenterExtension.swift in Sources */,
 				776BEBE51B0D46B30050BBD5 /* UINavigationController+Retro.swift in Sources */,
 				77319ACE1AF6CE6900C8CC09 /* mathbaby_frontend.xcdatamodeld in Sources */,
 				7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */,
