@@ -49,4 +49,8 @@ class UserStatisticsViewController: GameTypeViewController {
         }
     }
     
+    deinit {
+        NSNotificationCenter.removeObserverRetro(self)
+    }
+    
 }
