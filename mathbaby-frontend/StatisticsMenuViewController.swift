@@ -16,6 +16,7 @@ class StatisticsMenuViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateBtnOptOutText ()
+        Singleton.updateUserStatistics()
     }
     
     @IBAction func btnStatisticsTouchDown (AnyObject) {

@@ -192,21 +192,6 @@
                                     <action selector="btnBackTouchDown:" destination="yHM-4H-VWM" eventType="touchDown" id="zbT-eS-Ilo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oe-77-lbv">
-                                <rect key="frame" x="190" y="210" width="70" height="70"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="9Pg-XC-OUB"/>
-                                    <constraint firstAttribute="width" constant="70" id="CtM-AV-LKS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="➕">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnOperationClicked:" destination="yHM-4H-VWM" eventType="touchDown" id="o94-P8-bFp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mG6-pm-sZI">
                                 <rect key="frame" x="340" y="320" width="60" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -267,6 +252,21 @@
                                     <constraint firstAttribute="height" constant="40" id="78a-5e-dpg"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Oe-77-lbv">
+                                <rect key="frame" x="190" y="210" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="9Pg-XC-OUB"/>
+                                    <constraint firstAttribute="width" constant="70" id="CtM-AV-LKS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="➕">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnOperationClicked:" destination="yHM-4H-VWM" eventType="touchDown" id="o94-P8-bFp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -292,6 +292,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lbStatistics" destination="8xa-nb-YV8" id="foS-b2-8I4"/>
                         <outletCollection property="btnCollection" destination="6Oe-77-lbv" collectionClass="NSMutableArray" id="9rZ-h9-hpZ"/>
                         <outletCollection property="btnCollection" destination="nNL-Np-jNF" collectionClass="NSMutableArray" id="emG-cy-i9U"/>
                         <outletCollection property="btnCollection" destination="4uW-7P-QLT" collectionClass="NSMutableArray" id="9E3-LU-xnJ"/>

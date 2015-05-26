@@ -16,6 +16,6 @@ class GameRecord: NSManagedObject, Printable {
     @NSManaged var gametype: NSNumber
 
     override var description: String {
-        return "SettingEntry(type: \(gametype), score: \(score))"
+        return "GameRecord(type: \(gametype), score: \(score))"
     }
 }

@@ -15,7 +15,7 @@
 		77319AD81AF6CE6900C8CC09 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77319AD61AF6CE6900C8CC09 /* LaunchScreen.xib */; };
 		77319AE41AF6CE6900C8CC09 /* mathbaby_frontendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77319AE31AF6CE6900C8CC09 /* mathbaby_frontendTests.swift */; };
 		77319AEE1AF6E28F00C8CC09 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77319AED1AF6E28F00C8CC09 /* RequestHandler.swift */; };
-		776BEBE51B0D46B30050BBD5 /* UINavigationController+Retro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776BEBE41B0D46B30050BBD5 /* UINavigationController+Retro.swift */; };
+		776BEBE51B0D46B30050BBD5 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */; };
 		776BEBE91B0D6CDE0050BBD5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776BEBE81B0D6CDE0050BBD5 /* UIColorExtension.swift */; };
 		776BEBEB1B0D71170050BBD5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776BEBEA1B0D71170050BBD5 /* BaseViewController.swift */; };
 		776BEBEF1B0D86A20050BBD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776BEBEE1B0D86A20050BBD5 /* Constants.swift */; };
@@ -59,7 +59,7 @@
 		77319AE21AF6CE6900C8CC09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77319AE31AF6CE6900C8CC09 /* mathbaby_frontendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathbaby_frontendTests.swift; sourceTree = "<group>"; };
 		77319AED1AF6E28F00C8CC09 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
-		776BEBE41B0D46B30050BBD5 /* UINavigationController+Retro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Retro.swift"; sourceTree = "<group>"; };
+		776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		776BEBE81B0D6CDE0050BBD5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		776BEBEA1B0D71170050BBD5 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		776BEBEE1B0D86A20050BBD5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -183,7 +183,6 @@
 				77319ACA1AF6CE6900C8CC09 /* AppDelegate.swift */,
 				77D35F6D1AF950E000CD26ED /* Singleton.swift */,
 				77319AED1AF6E28F00C8CC09 /* RequestHandler.swift */,
-				776BEBE41B0D46B30050BBD5 /* UINavigationController+Retro.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 				776BEBE81B0D6CDE0050BBD5 /* UIColorExtension.swift */,
 				7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */,
 				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
+				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				77319AEE1AF6E28F00C8CC09 /* RequestHandler.swift in Sources */,
 				77E1FD711B0F371900DA3B65 /* StatisticsMenuViewController.swift in Sources */,
 				77CFE2B61B1332F500B49E17 /* NSNotificationCenterExtension.swift in Sources */,
-				776BEBE51B0D46B30050BBD5 /* UINavigationController+Retro.swift in Sources */,
+				776BEBE51B0D46B30050BBD5 /* UINavigationControllerExtension.swift in Sources */,
 				77319ACE1AF6CE6900C8CC09 /* mathbaby_frontend.xcdatamodeld in Sources */,
 				7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */,
 			);

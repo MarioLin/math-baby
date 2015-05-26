@@ -12,7 +12,7 @@ import UIKit
 class GameTypeViewController: BaseViewController {
     
     @IBOutlet var btnCollection:[UIButton]!
-    private var btnToTick = [UIButton:UILabel]()
+    var btnToTick = [UIButton:UILabel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class GameTypeViewController: BaseViewController {
         updateButtonState()
     }
     
-    private func updateButtonState () {
+    func updateButtonState () {
         let gametype = Singleton.gametype
         for button in btnCollection {
             if gametype % button.tag == 0 {

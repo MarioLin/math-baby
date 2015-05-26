@@ -14,7 +14,7 @@ extension NSNotificationCenter {
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: notificationName, object: nil))
     }
     
-    class func addObserverForRetro(obj: AnyObject, _ callback: Selector, _ notificationName: String) {
+    class func addObserverRetro(obj: AnyObject, _ callback: Selector, _ notificationName: String) {
         NSNotificationCenter.defaultCenter().addObserver(obj, selector: callback, name: notificationName, object: nil)
     }
     

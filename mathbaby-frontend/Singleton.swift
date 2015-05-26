@@ -93,11 +93,12 @@ class Singleton {
     class func storeGameRecord(#score: Int, gametype: Int) -> GameRecord? {
         if let gameRecord = gameTypeTogameRecords[gametype] {
             gameRecord.score = max(score, Int(gameRecord.score))
+            self.managedObjectContext.save(nil)
             return gameRecord
-        }
-        if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext) as? GameRecord {
+        } else if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext) as? GameRecord {
             newRecord.score = score
             newRecord.gametype = gametype
+            self.managedObjectContext.save(nil)
             return newRecord
         }
         return nil
@@ -129,7 +130,7 @@ class Singleton {
             self.gametypeToPercentile[gametype] = nil
             RequestHandler.sendGetRequest(suburl: "fetchUserRankingForGames", parameters: ["level": gametype, "score": gameRecord.score]) {
                 (json) in
-                if let percentile = json[String(gametype)] as? Double {
+                if let percentile = json["percentile"] as? Double {
                     self.gametypeToPercentile[gametype] = percentile
                     NSNotificationCenter.postNotificationRetro(Constants.kNSNotification.statisticsUpdate)
                 }
