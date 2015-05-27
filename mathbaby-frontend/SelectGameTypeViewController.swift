@@ -11,7 +11,7 @@ import Foundation
 class SelectGameTypeViewController: GameTypeViewController {
     
     @IBAction func btnRightArrowTouchDown (AnyObject) {
-        DLog("To be implemented")
+        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
     }
     
 }

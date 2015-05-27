@@ -26,6 +26,8 @@ struct Constants {
         static let SelectGameTypeViewController = "SelectGameTypeViewController"
         static let CreditsViewController = "CreditsViewController"
         static let UserStatisticsViewController = "UserStatisticsViewController"
+        static let GamePlayViewController = "GamePlayViewController"
+        static let GameResultViewController = "GameResultViewController"
     }
     
 }

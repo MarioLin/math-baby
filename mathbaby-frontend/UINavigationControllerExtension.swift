@@ -12,14 +12,14 @@ import UIKit
 extension UINavigationController {
     
     func pushViewControllerRetro(viewController:UIViewController) {
-    var transition = CATransition();
-    transition.duration = 0.25;
-    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromRight;
-    self.view.layer.addAnimation(transition, forKey: nil)
-    
-    self.pushViewController(viewController, animated: true)
+        var transition = CATransition();
+        transition.duration = 0.25;
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromRight;
+        self.view.layer.addAnimation(transition, forKey: nil)
+        
+        self.pushViewController(viewController, animated: true)
     }
     
     func popViewControllerRetro() {
@@ -28,6 +28,17 @@ extension UINavigationController {
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromLeft;
+        self.view.layer.addAnimation(transition, forKey: nil)
+        
+        self.popViewControllerAnimated(true)
+    }
+    
+    func popViewControllerReverseDirectionRetro() {
+        var transition = CATransition();
+        transition.duration = 0.25;
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionPush;
+        transition.subtype = kCATransitionFromRight;
         self.view.layer.addAnimation(transition, forKey: nil)
         
         self.popViewControllerAnimated(true)
