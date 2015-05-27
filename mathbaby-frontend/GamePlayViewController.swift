@@ -56,7 +56,7 @@ class GamePlayViewController: BaseViewController {
     }
     
     func updateGameTimerGraphics() {
-        lbGametime.text = "\(gameTime)"
+        lbGametime.text = String(format: "%.1f", gameTime)
     }
     
     func endGame () {
