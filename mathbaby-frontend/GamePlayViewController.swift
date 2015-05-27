@@ -18,6 +18,8 @@ class GamePlayViewController: BaseViewController {
     private var gameStarted = false
     var gameTime = 60.0
     var gameTimer:NSTimer?
+    var score = 0
+    
     @IBOutlet weak var lbQuestion:UILabel!
     @IBOutlet weak var lbGametime:UILabel!
     @IBOutlet weak var lbScore:UILabel!
@@ -61,6 +63,9 @@ class GamePlayViewController: BaseViewController {
     
     func endGame () {
         gameTimer?.invalidate()
+        let vc = Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameResultViewController) as! GameResultViewController
+        vc.gameResult = score
+        self.navigationController?.pushViewControllerRetro(vc)
     }
     
 }

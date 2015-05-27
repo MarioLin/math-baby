@@ -11,6 +11,8 @@ import UIKit
 
 class GameResultViewController: BaseViewController {
     
+    var gameResult:Int = 0
+    
     @IBAction func btnPlayAgainTouchDown (AnyObject) {
         self.navigationController?.popViewControllerReverseDirectionRetro()
     }
