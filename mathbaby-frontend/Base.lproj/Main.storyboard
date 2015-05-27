@@ -182,7 +182,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAU-AA-qC9">
-                                <rect key="frame" x="16" y="20" width="35" height="30"/>
+                                <rect key="frame" x="16" y="28" width="35" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -190,8 +190,26 @@
                                     <action selector="btnBackTouchDown:" destination="Tsa-FP-pB4" eventType="touchDown" id="NKT-TJ-aI9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlG-WX-Vxj">
+                                <rect key="frame" x="182" y="88" width="236" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55V-u2-B2G">
+                                <rect key="frame" x="263" y="30" width="76" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDr-ay-LKa">
+                                <rect key="frame" x="477" y="30" width="97" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAV-rF-wUs">
-                                <rect key="frame" x="16" y="58" width="185" height="30"/>
+                                <rect key="frame" x="16" y="66" width="185" height="30"/>
                                 <state key="normal" title="Finish game now (debug)">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -201,7 +219,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="55V-u2-B2G" firstAttribute="top" secondItem="W8P-gP-lCK" secondAttribute="bottom" constant="10" id="9zP-6v-SA1"/>
+                            <constraint firstItem="HlG-WX-Vxj" firstAttribute="top" secondItem="55V-u2-B2G" secondAttribute="bottom" constant="10" id="Bso-P2-YWP"/>
+                            <constraint firstItem="55V-u2-B2G" firstAttribute="centerY" secondItem="hDr-ay-LKa" secondAttribute="centerY" id="DKb-aV-rrN"/>
+                            <constraint firstAttribute="centerX" secondItem="HlG-WX-Vxj" secondAttribute="centerX" id="RSd-CU-J0V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hDr-ay-LKa" secondAttribute="trailing" constant="10" id="xFB-z0-YVH"/>
+                            <constraint firstAttribute="centerX" secondItem="55V-u2-B2G" secondAttribute="centerX" id="zXv-jc-kQo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lbGametime" destination="55V-u2-B2G" id="Jcf-TG-Eyg"/>
+                        <outlet property="lbQuestion" destination="HlG-WX-Vxj" id="Qlt-ZC-RQN"/>
+                        <outlet property="lbScore" destination="hDr-ay-LKa" id="iHf-UU-P3n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3v4-Mn-zgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

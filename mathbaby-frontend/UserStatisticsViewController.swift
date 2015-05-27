@@ -52,7 +52,9 @@ class UserStatisticsViewController: GameTypeViewController {
         }
     }
     
-    deinit {
+    @IBAction override func btnBackTouchDown (AnyObject) {
+        super.btnBackTouchDown(self)
+        timer?.invalidate()
         NSNotificationCenter.removeObserverRetro(self)
     }
     
