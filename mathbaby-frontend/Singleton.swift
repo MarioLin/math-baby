@@ -157,7 +157,7 @@ class Singleton {
     }
     
     // return user percentile for requested gametype
-    // nil is return when data is not available yet
+    // return nil if data is not available yet
     class func getPercentileForGametype(gametype:Int) -> Double? {
         return gametypeToPercentile[gametype]
     }

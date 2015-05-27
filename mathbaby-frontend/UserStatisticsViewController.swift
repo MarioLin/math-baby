@@ -28,8 +28,11 @@ class UserStatisticsViewController: GameTypeViewController {
     }
     
     func updateStatisticLabel () {
-        if Singleton.isUserStatisticsAvailableForGametype(Singleton.gametype) {
-            if let percentile = Singleton.getPercentileForGametype(Singleton.gametype) {
+        let gametype = Singleton.gametype
+        if gametype == 1 {
+            lbStatistics.text = ""
+        } else if Singleton.isUserStatisticsAvailableForGametype(gametype) {
+            if let percentile = Singleton.getPercentileForGametype(gametype) {
                 lbStatistics.text = "\(percentile)"
             } else {
                 lbStatistics.text = "loading."
