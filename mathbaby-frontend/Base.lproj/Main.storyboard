@@ -229,9 +229,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="lbGametime" destination="55V-u2-B2G" id="Jcf-TG-Eyg"/>
+                        <outlet property="lbGametime" destination="55V-u2-B2G" id="gKK-GS-pdp"/>
                         <outlet property="lbQuestion" destination="HlG-WX-Vxj" id="Qlt-ZC-RQN"/>
-                        <outlet property="lbScore" destination="hDr-ay-LKa" id="iHf-UU-P3n"/>
+                        <outlet property="lbScore" destination="hDr-ay-LKa" id="V9z-Kl-FV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3v4-Mn-zgo" userLabel="First Responder" sceneMemberID="firstResponder"/>

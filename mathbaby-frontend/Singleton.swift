@@ -41,8 +41,8 @@ class Singleton {
     class func setUp() {
         if !userDefault.boolForKey(Constants.kUserDefault.defaultValueAlreadySet) {
             userDefault.setBool(true, forKey: Constants.kUserDefault.defaultValueAlreadySet)
-            userDefault.setInteger(1, forKey: Constants.kUserDefault.gametype)
-            userDefault.setBool(false, forKey: Constants.kUserDefault.statisticsOptOut)
+            userDefault.setInteger(Constants.defaultValues.userDefault.gametype, forKey: Constants.kUserDefault.gametype)
+            userDefault.setBool(Constants.defaultValues.userDefault.statisticsOptOut, forKey: Constants.kUserDefault.statisticsOptOut)
             userDefault.synchronize()
         }
         for gameRecord in loadGameRecords() {

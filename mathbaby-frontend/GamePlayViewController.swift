@@ -14,8 +14,7 @@ struct UIButtons {
 }
 
 class GamePlayViewController: BaseViewController {
-    
-    private var gameStarted = false
+
     var gameTime = 60.0
     var gameTimer:NSTimer?
     var score = 0
@@ -26,16 +25,16 @@ class GamePlayViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("timerFire"), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(animated: Bool) {
-        gameStarted = false
+        gameTime = Constants.defaultValues.game.gameTime
+        score = Constants.defaultValues.game.score
         updateGameTimerGraphics()
     }
     
     override func viewDidAppear(animated: Bool) {
-        gameStarted = true
+        gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("timerFire"), userInfo: nil, repeats: true)
     }
     
     @IBAction func btnBackTouchDown (AnyObject) {
@@ -54,11 +53,13 @@ class GamePlayViewController: BaseViewController {
         updateGameTimerGraphics()
         if gameTime == 0 {
             endGame()
+            gameTimer?.invalidate()
         }
     }
     
     func updateGameTimerGraphics() {
         lbGametime.text = String(format: "%.1f", gameTime)
+        lbScore.text = String(format: "%d", score)
     }
     
     func endGame () {

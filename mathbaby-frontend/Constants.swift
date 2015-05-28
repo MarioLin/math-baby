@@ -30,4 +30,17 @@ struct Constants {
         static let GameResultViewController = "GameResultViewController"
     }
     
+    struct defaultValues {
+        
+        struct game {
+            static let gameTime = 30.0
+            static let score = 0
+        }
+        
+        struct userDefault {
+            static let gametype = 1
+            static let statisticsOptOut = false
+        }
+    }
+    
 }
