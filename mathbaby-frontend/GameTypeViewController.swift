@@ -38,6 +38,7 @@ class GameTypeViewController: BaseViewController {
             Singleton.gametype = gametype * sender.tag
         }
         updateButtonState()
+
     }
     
     func updateButtonState () {
@@ -50,7 +51,12 @@ class GameTypeViewController: BaseViewController {
                 // type disselected
                 btnToTick[button]?.hidden = true
             }
+
         }
+//        for button in btnToTick.keys {
+//            println(btnToTick[button])
+//            println(btnToTick[button]?.hidden)
+//        }
     }
     
 }

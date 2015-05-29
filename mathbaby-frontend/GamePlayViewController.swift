@@ -18,13 +18,13 @@ class GamePlayViewController: BaseViewController {
     var gameTime = 60.0
     var gameTimer:NSTimer?
     var score = 0
-    
     @IBOutlet weak var lbQuestion:UILabel!
     @IBOutlet weak var lbGametime:UILabel!
     @IBOutlet weak var lbScore:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(Singleton.gametype)
     }
     
     override func viewWillAppear(animated: Bool) {

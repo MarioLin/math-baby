@@ -7,11 +7,18 @@
 //
 
 import Foundation
-
+import UIKit
 class SelectGameTypeViewController: GameTypeViewController {
     
     @IBAction func btnRightArrowTouchDown (AnyObject) {
-        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
+        if Singleton.Gametype.isValidGametype(Singleton.gametype) {
+            self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
+        }
+        else {
+            let alert = UIAlertView(title: "Invalid Selection", message: nil, delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+        }
+        
     }
     
 }
