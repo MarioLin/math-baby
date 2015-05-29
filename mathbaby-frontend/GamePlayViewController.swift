@@ -39,13 +39,6 @@ private class UIQuestionSet:UIView {
         viewController.view.addSubview(self)
     }
     
-    func resetAnswerLabels () {
-        for button in buttons {
-            button.setTitle("", forState: UIControlState.Normal)
-            button.setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
-        }
-    }
-    
     func copyText (setToCopy:UIQuestionSet) {
         question.text = setToCopy.question.text
         for i in 0...buttons.count-1 {
@@ -64,6 +57,8 @@ class GamePlayViewController: BaseViewController {
     var gameTime = 60.0
     var gameTimer:NSTimer?
     var score = 0
+    
+    var correctAnswer:String?
 
     private var btnSetAnswers:UIQuestionSet!
     private var btnSetAnimations:UIQuestionSet!
@@ -92,6 +87,8 @@ class GamePlayViewController: BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("timerFire"), userInfo: nil, repeats: true)
+        for buttonIdx in 0...btnSetAnswers.buttons.count-1 {
+        }
     }
     
     @IBAction func btnBackTouchDown (AnyObject) {
@@ -107,7 +104,18 @@ class GamePlayViewController: BaseViewController {
         call when answer UIButton is pressed, score and gametime should be updated accordingly
     */
     func btnAnswerTouchDown (button: UIButton) {
-        DLog("\(button.titleLabel?.text) pressed")
+        if (button.titleColorForState(UIControlState.Normal) == UIColor.darkTextColor()) {
+            button.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+            if button.titleLabel?.text == correctAnswer {
+                DLog("correct answer")
+                score += Constants.defaultValues.game.scoreRewardForCorrectAnswer
+                gameTime += Constants.defaultValues.game.gametimeRewardForCorrectAnswer
+                setUpNewQuestion(false)
+            } else {
+                gameTime -= Constants.defaultValues.game.gametimePenaltyForWrongAnswer
+                DLog(("wrong answer"))
+            }
+        }
     }
     
     func setUpNewQuestion (animated: Bool) {
@@ -115,15 +123,12 @@ class GamePlayViewController: BaseViewController {
         if !animated {
             let newQuestion = getNewQuestion()
             btnSetAnswers.question.text = newQuestion
-            btnSetAnswers.resetAnswerLabels()
             let answers = getPossibleAnswersForQuestion(newQuestion)
-            var answersInString = [String]()
-            if newQuestion[1] == "/" {
-                answersInString = answers.map{$0.doubleValue.formatString(".2")}
-            } else {
-                answersInString = answers.map{$0.stringValue}
-            }
+            var answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
+            correctAnswer = answersInString[0]
+            answersInString.shuffle()
             for buttonIdx in 0...btnSetAnswers.buttons.count-1 {
+                btnSetAnswers.buttons[buttonIdx].setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
                 btnSetAnswers.buttons[buttonIdx].setTitle(answersInString[buttonIdx], forState: UIControlState.Normal)
             }
             btnSetAnswers.hidden = false
@@ -134,6 +139,10 @@ class GamePlayViewController: BaseViewController {
         return String(randomNumberMod(10)) + Gametype.randomGameType(Singleton.gametype) + String(randomNumberMod(10))
     }
     
+    /* 
+        return an array of answers for a particular question
+        correct answer is at position 0 in the return array
+    */
     func getPossibleAnswersForQuestion (var question: String) -> [NSNumber] {
         question = question + ".0"
         let answer = computeAnswerForQuestion (question)

@@ -22,6 +22,7 @@
 		7773EF5B1B11AE7700F84906 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */; };
 		7773EF5D1B11B83000F84906 /* SelectGameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5C1B11B83000F84906 /* SelectGameTypeViewController.swift */; };
 		7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5E1B11BB2900F84906 /* UserStatisticsViewController.swift */; };
+		77C83E931B190C88006FD5FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C83E921B190C88006FD5FC /* ArrayExtension.swift */; };
 		77C99D011B17F3C100047FB0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C99D001B17F3C100047FB0 /* StringExtension.swift */; };
 		77C9A2A1B2A9FA464A257A91 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5257D79F4EE8E936E7FD108D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77CB60BB1B0873D800A2C6EB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB60BA1B0873D800A2C6EB /* LineChart.swift */; };
@@ -70,6 +71,7 @@
 		7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		7773EF5C1B11B83000F84906 /* SelectGameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGameTypeViewController.swift; sourceTree = "<group>"; };
 		7773EF5E1B11BB2900F84906 /* UserStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticsViewController.swift; sourceTree = "<group>"; };
+		77C83E921B190C88006FD5FC /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		77C99D001B17F3C100047FB0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		77CB60BA1B0873D800A2C6EB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		77CC86DD1B155113001A5001 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				77C99D001B17F3C100047FB0 /* StringExtension.swift */,
 				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
 				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
+				77C83E921B190C88006FD5FC /* ArrayExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				77E1FD6F1B0F30A900DA3B65 /* GameTypeViewController.swift in Sources */,
 				77D35F6E1AF950E000CD26ED /* Singleton.swift in Sources */,
 				77CC86DE1B155113001A5001 /* GamePlayViewController.swift in Sources */,
+				77C83E931B190C88006FD5FC /* ArrayExtension.swift in Sources */,
 				7773EF5D1B11B83000F84906 /* SelectGameTypeViewController.swift in Sources */,
 				77319ACB1AF6CE6900C8CC09 /* AppDelegate.swift in Sources */,
 				77E701DA1B16FC4800BA71BA /* NumberExtension.swift in Sources */,
