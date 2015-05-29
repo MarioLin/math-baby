@@ -22,6 +22,7 @@
 		7773EF5B1B11AE7700F84906 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */; };
 		7773EF5D1B11B83000F84906 /* SelectGameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5C1B11B83000F84906 /* SelectGameTypeViewController.swift */; };
 		7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7773EF5E1B11BB2900F84906 /* UserStatisticsViewController.swift */; };
+		77C99D011B17F3C100047FB0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C99D001B17F3C100047FB0 /* StringExtension.swift */; };
 		77C9A2A1B2A9FA464A257A91 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5257D79F4EE8E936E7FD108D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77CB60BB1B0873D800A2C6EB /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CB60BA1B0873D800A2C6EB /* LineChart.swift */; };
 		77CC86DE1B155113001A5001 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC86DD1B155113001A5001 /* GamePlayViewController.swift */; };
@@ -32,6 +33,7 @@
 		77DA6A7A1B100FEC00215A5F /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DA6A791B100FEC00215A5F /* CreditsViewController.swift */; };
 		77E1FD6F1B0F30A900DA3B65 /* GameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1FD6E1B0F30A900DA3B65 /* GameTypeViewController.swift */; };
 		77E1FD711B0F371900DA3B65 /* StatisticsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1FD701B0F371900DA3B65 /* StatisticsMenuViewController.swift */; };
+		77E701DA1B16FC4800BA71BA /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E701D91B16FC4800BA71BA /* NumberExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,7 @@
 		7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		7773EF5C1B11B83000F84906 /* SelectGameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGameTypeViewController.swift; sourceTree = "<group>"; };
 		7773EF5E1B11BB2900F84906 /* UserStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticsViewController.swift; sourceTree = "<group>"; };
+		77C99D001B17F3C100047FB0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		77CB60BA1B0873D800A2C6EB /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		77CC86DD1B155113001A5001 /* GamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
 		77CC86DF1B155122001A5001 /* GameResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		77DA6A791B100FEC00215A5F /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		77E1FD6E1B0F30A900DA3B65 /* GameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTypeViewController.swift; sourceTree = "<group>"; };
 		77E1FD701B0F371900DA3B65 /* StatisticsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsMenuViewController.swift; sourceTree = "<group>"; };
+		77E701D91B16FC4800BA71BA /* NumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
 		DAD2BABE7E8C6AB736906A4C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC41ECE0330E2D92CD2AE03F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +143,7 @@
 				776BEBE71B0D635C0050BBD5 /* ViewControllers */,
 				7753F3641B0B13240024EA85 /* DataModel */,
 				7773EF571B116FC700F84906 /* Constants */,
+				77E701DB1B16FC5200BA71BA /* Extensions */,
 				77319AC81AF6CE6900C8CC09 /* Supporting Files */,
 			);
 			path = "mathbaby-frontend";
@@ -211,8 +216,6 @@
 				776BEBEE1B0D86A20050BBD5 /* Constants.swift */,
 				776BEBE81B0D6CDE0050BBD5 /* UIColorExtension.swift */,
 				7773EF5A1B11AE7700F84906 /* UIFontExtension.swift */,
-				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
-				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -259,6 +262,17 @@
 				77CE78651AF8912100CA4BD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77E701DB1B16FC5200BA71BA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				77E701D91B16FC4800BA71BA /* NumberExtension.swift */,
+				77C99D001B17F3C100047FB0 /* StringExtension.swift */,
+				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
+				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		8B184605F627C85799F6E9E9 /* Frameworks */ = {
@@ -436,6 +450,7 @@
 				77CC86DE1B155113001A5001 /* GamePlayViewController.swift in Sources */,
 				7773EF5D1B11B83000F84906 /* SelectGameTypeViewController.swift in Sources */,
 				77319ACB1AF6CE6900C8CC09 /* AppDelegate.swift in Sources */,
+				77E701DA1B16FC4800BA71BA /* NumberExtension.swift in Sources */,
 				77CB60BB1B0873D800A2C6EB /* LineChart.swift in Sources */,
 				776BEBE91B0D6CDE0050BBD5 /* UIColorExtension.swift in Sources */,
 				77319AEE1AF6E28F00C8CC09 /* RequestHandler.swift in Sources */,
@@ -443,6 +458,7 @@
 				77CFE2B61B1332F500B49E17 /* NSNotificationCenterExtension.swift in Sources */,
 				776BEBE51B0D46B30050BBD5 /* UINavigationControllerExtension.swift in Sources */,
 				77319ACE1AF6CE6900C8CC09 /* mathbaby_frontend.xcdatamodeld in Sources */,
+				77C99D011B17F3C100047FB0 /* StringExtension.swift in Sources */,
 				7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ import UIKit
 class SelectGameTypeViewController: GameTypeViewController {
     
     @IBAction func btnRightArrowTouchDown (AnyObject) {
-        if Singleton.Gametype.isValidGametype(Singleton.gametype) {
+        if Gametype.isValidGametype(Singleton.gametype) {
             self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
         }
         else {

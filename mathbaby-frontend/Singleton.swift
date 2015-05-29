@@ -10,6 +10,38 @@ import Foundation
 import CoreData
 import UIKit
 
+enum Gametype : Int {
+    case kGTAdd = 3
+    case kGTSub = 5
+    case kGTMul = 7
+    case kGTDiv = 11
+    
+    static func isValidGametype (var gametype:Int) -> Bool {
+        if gametype == 1 {
+            return false
+        }
+        for key in [Gametype.kGTAdd, Gametype.kGTSub, Gametype.kGTMul, Gametype.kGTDiv] {
+            if gametype % key.rawValue == 0 {
+                gametype = gametype / key.rawValue
+            }
+        }
+        return gametype == 1
+    }
+    
+    static func randomGameType (gametype: Int) -> String {
+        var arr = [String]()
+        for (key,value) in [kGTAdd:"+",kGTSub:"-",kGTMul:"*",kGTDiv:"/"] {
+            if gametype % key.rawValue == 0 {
+                arr.append(value)
+            }
+        }
+        return arr[randomNumberMod(arr.count)]
+    }
+}
+
+func randomNumberMod(num:Int) -> Int {
+    return Int(arc4random_uniform(UInt32(num)))
+}
 
 class Singleton {
     
@@ -19,24 +51,6 @@ class Singleton {
     static private var gameTypeTogameRecords = [Int:GameRecord]()
     static private var gametypeToPercentile = [Int:Double]()
     
-    enum Gametype : Int {
-        case kGTAdd = 3
-        case kGTSub = 5
-        case kGTMul = 7
-        case kGTDiv = 11
-        
-        static func isValidGametype (var gametype:Int) -> Bool {
-            if gametype == 1 {
-                return false
-            }
-            for key in [Gametype.kGTAdd, Gametype.kGTSub, Gametype.kGTMul, Gametype.kGTDiv] {
-                if gametype % key.rawValue == 0 {
-                    gametype = gametype / key.rawValue
-                }
-            }
-            return gametype == 1
-        }
-    }
     // Sets up the default values for all menus
     class func setUp() {
         if !userDefault.boolForKey(Constants.kUserDefault.defaultValueAlreadySet) {
@@ -46,7 +60,7 @@ class Singleton {
             userDefault.synchronize()
         }
         for gameRecord in loadGameRecords() {
-            gameTypeTogameRecords[Int(gameRecord.gametype)] = gameRecord
+            gameTypeTogameRecords[gameRecord.gametype.integerValue] = gameRecord
         }
     }
     
@@ -92,7 +106,7 @@ class Singleton {
     */
     class func storeGameRecord(#score: Int, gametype: Int) -> GameRecord? {
         if let gameRecord = gameTypeTogameRecords[gametype] {
-            gameRecord.score = max(score, Int(gameRecord.score))
+            gameRecord.score = max(score, gameRecord.score.integerValue)
             self.managedObjectContext.save(nil)
             return gameRecord
         } else if let newRecord = NSEntityDescription.insertNewObjectForEntityForName("GameRecord", inManagedObjectContext: self.managedObjectContext) as? GameRecord {
