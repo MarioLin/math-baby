@@ -153,6 +153,23 @@ class Singleton {
     }
     
     /*
+        update user statistic with indicated game type in gametypeToPercentile with data from backend server
+        after each update done, Constants.kNSNotification.statisticsUpdate is posted in notification center
+    */
+    class func updateUserStatisticsForGametype (gametype: Int) {
+        if let gameRecord = self.gameTypeTogameRecords[gametype] {
+            self.gametypeToPercentile[gametype] = nil
+            RequestHandler.sendGetRequest(suburl: "fetchUserRankingForGames", parameters: ["level": gametype, "score": gameRecord.score]) {
+                (json) in
+                if let percentile = json["percentile"] as? Double {
+                    self.gametypeToPercentile[gametype] = percentile
+                    NSNotificationCenter.postNotificationRetro(Constants.kNSNotification.statisticsUpdate)
+                }
+            }
+        }
+    }
+    
+    /*
         return true if user statistics for game type is available, false otherwise
     */
     class func isUserStatisticsAvailableForGametype (gametype: Int) -> Bool {

@@ -39,12 +39,14 @@ private class UIQuestionSet:UIView {
         viewController.view.addSubview(self)
     }
     
-    func copyText (setToCopy:UIQuestionSet) {
+    func copyState (setToCopy:UIQuestionSet) {
+        self.frame = setToCopy.frame
         question.text = setToCopy.question.text
         for i in 0...buttons.count-1 {
             buttons[i].titleLabel?.text = setToCopy.buttons[i].titleLabel?.text
             buttons[i].setTitleColor(setToCopy.buttons[i].titleColorForState(UIControlState.Normal), forState: UIControlState.Normal)
         }
+        self.hidden = setToCopy.hidden
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -58,7 +60,10 @@ class GamePlayViewController: BaseViewController {
     var gameTimer:NSTimer?
     var score = 0
     
+    var topYForButtonSet:CGFloat!
     var correctAnswer:String?
+    
+    var animationOngoing = false
 
     private var btnSetAnswers:UIQuestionSet!
     private var btnSetAnimations:UIQuestionSet!
@@ -67,8 +72,8 @@ class GamePlayViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let topY = lbGametime.frame.origin.y + lbGametime.frame.size.height + 20
-        var frame:CGRect = CGRectMake(0, topY, self.view.frame.width, self.view.frame.height - topY - 40)
+        topYForButtonSet = lbGametime.frame.origin.y + lbGametime.frame.size.height + 20
+        var frame:CGRect = CGRectMake(0, topYForButtonSet, self.view.frame.width, self.view.frame.height - topYForButtonSet - 40)
         btnSetAnswers = UIQuestionSet(frame: frame, viewController: self)
         btnSetAnswers.hidden = true
         btnSetAnimations = UIQuestionSet(frame: frame, viewController: self)
@@ -87,8 +92,6 @@ class GamePlayViewController: BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         gameTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("timerFire"), userInfo: nil, repeats: true)
-        for buttonIdx in 0...btnSetAnswers.buttons.count-1 {
-        }
     }
     
     @IBAction func btnBackTouchDown (AnyObject) {
@@ -104,35 +107,46 @@ class GamePlayViewController: BaseViewController {
         call when answer UIButton is pressed, score and gametime should be updated accordingly
     */
     func btnAnswerTouchDown (button: UIButton) {
-        if (button.titleColorForState(UIControlState.Normal) == UIColor.darkTextColor()) {
+        if (button.titleColorForState(UIControlState.Normal) == UIColor.darkTextColor() && !animationOngoing) {
             button.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
             if button.titleLabel?.text == correctAnswer {
-                DLog("correct answer")
                 score += Constants.defaultValues.game.scoreRewardForCorrectAnswer
                 gameTime += Constants.defaultValues.game.gametimeRewardForCorrectAnswer
-                setUpNewQuestion(false)
+                setUpNewQuestion(true)
             } else {
-                gameTime -= Constants.defaultValues.game.gametimePenaltyForWrongAnswer
-                DLog(("wrong answer"))
+                gameTime += Constants.defaultValues.game.gametimePenaltyForWrongAnswer
             }
         }
     }
     
+    /*
+        Set up new question and play animation if animated is true
+        This function will update self.correctAnswer as well
+    */
     func setUpNewQuestion (animated: Bool) {
+        self.animationOngoing = true
         let animationTime = animated ? 0.25 : 0
-        if !animated {
-            let newQuestion = getNewQuestion()
-            btnSetAnswers.question.text = newQuestion
-            let answers = getPossibleAnswersForQuestion(newQuestion)
-            var answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
-            correctAnswer = answersInString[0]
-            answersInString.shuffle()
-            for buttonIdx in 0...btnSetAnswers.buttons.count-1 {
-                btnSetAnswers.buttons[buttonIdx].setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
-                btnSetAnswers.buttons[buttonIdx].setTitle(answersInString[buttonIdx], forState: UIControlState.Normal)
-            }
-            btnSetAnswers.hidden = false
+        btnSetAnimations.copyState(btnSetAnswers)
+        btnSetAnswers.frame.origin = CGPointMake(self.view.frame.width, topYForButtonSet)
+        btnSetAnswers.hidden = true
+        let newQuestion = self.getNewQuestion()
+        self.btnSetAnswers.question.text = newQuestion
+        let answers = self.getPossibleAnswersForQuestion(newQuestion)
+        var answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
+        self.correctAnswer = answersInString[0]
+        answersInString.shuffle()
+        for buttonIdx in 0...self.btnSetAnswers.buttons.count-1 {
+            self.btnSetAnswers.buttons[buttonIdx].setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
+            self.btnSetAnswers.buttons[buttonIdx].setTitle(answersInString[buttonIdx], forState: UIControlState.Normal)
         }
+        self.btnSetAnswers.hidden = false
+        UIView.animateWithDuration(animationTime, animations: {
+            self.btnSetAnimations.frame.origin = CGPointMake(-1.5*self.view.frame.width, self.topYForButtonSet)
+            self.btnSetAnswers.frame.origin = CGPointMake(0, self.topYForButtonSet)
+            }, completion: { completed in
+                self.btnSetAnimations.hidden = true
+                self.animationOngoing = false
+        })
     }
     
     func getNewQuestion () -> String {
@@ -156,7 +170,7 @@ class GamePlayViewController: BaseViewController {
             case "/":
                 answers = [answer, 1, 2, 3]
             default:
-                DLog("error!")
+                fatalError("Malformed question for game")
         }
         return answers
     }
@@ -186,13 +200,15 @@ class GamePlayViewController: BaseViewController {
     }
     
     /* 
-        This function handles the transition to the view controller that shows game result
+        This function handles the transition to the view controller that shows game result and updates score records
     */
     func endGame () {
         gameTimer?.invalidate()
         gameTimer = nil
         let vc = Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameResultViewController) as! GameResultViewController
         vc.gameResult = score
+        Singleton.storeGameRecord(score: score, gametype: Singleton.gametype)
+        Singleton.updateUserStatisticsForGametype(Singleton.gametype)
         self.navigationController?.pushViewControllerRetro(vc)
     }
     
