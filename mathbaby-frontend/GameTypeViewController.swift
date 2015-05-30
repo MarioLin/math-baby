@@ -11,6 +11,7 @@ import UIKit
 
 class GameTypeViewController: BaseViewController {
     
+    @IBOutlet var btnRight: UIButton!
     @IBOutlet var btnCollection:[UIButton]!
     var btnToTick = [UIButton:UILabel]()
     
@@ -53,10 +54,12 @@ class GameTypeViewController: BaseViewController {
             }
 
         }
-//        for button in btnToTick.keys {
-//            println(btnToTick[button])
-//            println(btnToTick[button]?.hidden)
-//        }
+        if Gametype.isValidGametype(gametype) {
+            btnRight?.alpha = 1.0
+        }
+        else {
+            btnRight?.alpha = 0.4
+        }
     }
     
 }

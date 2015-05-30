@@ -70,17 +70,6 @@
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="dfP-et-NWH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqa-o3-0r1">
-                                <rect key="frame" x="340" y="368" width="70" height="70"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="➡️">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnRightArrowTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="QXi-2u-yl9"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SqX-yD-rdi">
                                 <rect key="frame" x="24" y="328" width="26" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -128,6 +117,17 @@
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="JfE-D9-3qX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqa-o3-0r1">
+                                <rect key="frame" x="340" y="368" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="➡️">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRightArrowTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="QXi-2u-yl9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -159,6 +159,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnRight" destination="Gqa-o3-0r1" id="2zw-43-9Pg"/>
                         <outletCollection property="btnCollection" destination="cbX-YY-6s8" collectionClass="NSMutableArray" id="pbC-2x-NUG"/>
                         <outletCollection property="btnCollection" destination="E3W-wZ-SgH" collectionClass="NSMutableArray" id="kyP-DR-E8i"/>
                         <outletCollection property="btnCollection" destination="SNW-u1-Bov" collectionClass="NSMutableArray" id="gvk-o8-MZv"/>

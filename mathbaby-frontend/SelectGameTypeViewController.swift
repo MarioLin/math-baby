@@ -14,10 +14,6 @@ class SelectGameTypeViewController: GameTypeViewController {
         if Gametype.isValidGametype(Singleton.gametype) {
             self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
         }
-        else {
-            let alert = UIAlertView(title: "Invalid Selection", message: nil, delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-        }
         
     }
     
