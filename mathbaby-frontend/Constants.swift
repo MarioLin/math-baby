@@ -33,7 +33,7 @@ struct Constants {
     struct defaultValues {
         
         struct game {
-            static let gameTime = 30.0
+            static let gameTime = 12.0
             static let score = 0
             static let gametimePenaltyForWrongAnswer = -1.0
             static let gametimeRewardForCorrectAnswer = 0.5
