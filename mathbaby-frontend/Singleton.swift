@@ -43,6 +43,10 @@ func randomNumberMod(num:Int) -> Int {
     return Int(arc4random_uniform(UInt32(num)))
 }
 
+func randomPositiveNegativeOne() -> Int {
+    return 2*randomNumberMod(1)-1
+}
+
 class Singleton {
     
     static private let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!

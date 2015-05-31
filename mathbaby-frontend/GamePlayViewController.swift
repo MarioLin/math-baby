@@ -130,7 +130,7 @@ class GamePlayViewController: BaseViewController {
         btnSetAnswers.frame.origin = CGPointMake(self.view.frame.width, topYForButtonSet)
         btnSetAnswers.hidden = true
         let newQuestion = self.getNewQuestion()
-        self.btnSetAnswers.question.text = newQuestion
+        self.btnSetAnswers.question.text = convertQuestionToDisplayFormat(newQuestion)
         let answers = self.getPossibleAnswersForQuestion(newQuestion)
         var answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
         self.correctAnswer = answersInString[0]
@@ -150,7 +150,15 @@ class GamePlayViewController: BaseViewController {
     }
     
     func getNewQuestion () -> String {
-        return String(randomNumberMod(10)) + Gametype.randomGameType(Singleton.gametype) + String(randomNumberMod(10))
+        return String(randomNumberMod(9) + 1) + Gametype.randomGameType(Singleton.gametype) + String(randomNumberMod(9) + 1)
+    }
+    
+    func convertQuestionToDisplayFormat (var question:String) -> String {
+        if question[1] == "*" {
+            question = question.stringByReplacingOccurrencesOfString("*", withString: "x", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        }
+        question = question[0] + " " + question[1] + " " + question[2]
+        return question
     }
     
     /* 
@@ -160,17 +168,23 @@ class GamePlayViewController: BaseViewController {
     func getPossibleAnswersForQuestion (var question: String) -> [NSNumber] {
         question = question + ".0"
         let answer = computeAnswerForQuestion (question)
-        var answers = [NSNumber]()
+        var answers = [answer]
         let operation = question[1]
-        switch operation {
+        while answers.count < 4 {
+            var newAnswer:NSNumber!
+            switch operation {
             case "+", "-":
-                answers = [answer, 1, 2, 3]
+                newAnswer = answer.integerValue + randomPositiveNegativeOne() * (randomNumberMod(3) + 1)
             case "*":
-                answers = [answer, 1, 2, 3]
+                newAnswer = answer.integerValue + randomPositiveNegativeOne() * (randomNumberMod(20) + 1)
             case "/":
-                answers = [answer, 1, 2, 3]
+                newAnswer = answer.doubleValue + Double(randomPositiveNegativeOne()) * Double(randomNumberMod(9) + 1) / Double(randomNumberMod(10) + 11)
             default:
                 fatalError("Malformed question for game")
+            }
+            if !contains(answers, newAnswer) {
+                answers.append(newAnswer)
+            }
         }
         return answers
     }

@@ -44,6 +44,7 @@ struct Constants {
             static let gametype = 1
             static let statisticsOptOut = false
         }
+        
     }
     
 }

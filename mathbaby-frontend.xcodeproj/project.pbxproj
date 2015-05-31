@@ -269,11 +269,11 @@
 		77E701DB1B16FC5200BA71BA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				77C83E921B190C88006FD5FC /* ArrayExtension.swift */,
 				77E701D91B16FC4800BA71BA /* NumberExtension.swift */,
 				77C99D001B17F3C100047FB0 /* StringExtension.swift */,
 				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
 				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
-				77C83E921B190C88006FD5FC /* ArrayExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
