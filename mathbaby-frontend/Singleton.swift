@@ -108,7 +108,7 @@ class Singleton {
     
         return GameRecord on success, nil on failure
     */
-    class func storeGameRecord(#score: Int, gametype: Int) -> GameRecord? {
+    class func storeGameRecord(gametype: Int, _ score: Int) -> GameRecord? {
         if let gameRecord = gameTypeTogameRecords[gametype] {
             gameRecord.score = max(score, gameRecord.score.integerValue)
             self.managedObjectContext.save(nil)
@@ -145,14 +145,22 @@ class Singleton {
     */
     class func updateUserStatistics () {
         for (gametype, gameRecord) in gameTypeTogameRecords {
+            DLog("\(gameRecord)")
             self.gametypeToPercentile[gametype] = nil
             RequestHandler.sendGetRequest(suburl: "fetchUserRankingForGames", parameters: ["level": gametype, "score": gameRecord.score]) {
-                (json) in
+                json in
                 if let percentile = json["percentile"] as? Double {
+                    DLog("update gametype: \(gametype) with percentile: \(percentile)")
                     self.gametypeToPercentile[gametype] = percentile
                     NSNotificationCenter.postNotificationRetro(Constants.kNSNotification.statisticsUpdate)
                 }
             }
+        }
+    }
+    
+    class func updateServerStatisticsForGame(gametype: Int, _ score: Int) {
+        if !Singleton.statisticsOptOut {
+            RequestHandler.sendPostRequest(suburl: "updateUserStatistics", parameters: ["level": gametype, "score": score]) { json in }
         }
     }
     
@@ -164,8 +172,9 @@ class Singleton {
         if let gameRecord = self.gameTypeTogameRecords[gametype] {
             self.gametypeToPercentile[gametype] = nil
             RequestHandler.sendGetRequest(suburl: "fetchUserRankingForGames", parameters: ["level": gametype, "score": gameRecord.score]) {
-                (json) in
+                json in
                 if let percentile = json["percentile"] as? Double {
+                    DLog("update gametype: \(gametype) with percentile: \(percentile)")
                     self.gametypeToPercentile[gametype] = percentile
                     NSNotificationCenter.postNotificationRetro(Constants.kNSNotification.statisticsUpdate)
                 }

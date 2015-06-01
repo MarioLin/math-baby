@@ -99,8 +99,7 @@ class GamePlayViewController: BaseViewController {
     }
     
     @IBAction func DEBUG_btnProceedTouchDown (AnyObject) {
-        gameTimer?.invalidate()
-        self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameResultViewController))
+        endGame()
     }
     
     /*
@@ -218,10 +217,10 @@ class GamePlayViewController: BaseViewController {
     */
     func endGame () {
         gameTimer?.invalidate()
-        gameTimer = nil
         let vc = Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GameResultViewController) as! GameResultViewController
         vc.gameResult = score
-        Singleton.storeGameRecord(score: score, gametype: Singleton.gametype)
+        Singleton.storeGameRecord(Singleton.gametype, score)
+        Singleton.updateServerStatisticsForGame(Singleton.gametype, score)
         Singleton.updateUserStatisticsForGametype(Singleton.gametype)
         self.navigationController?.pushViewControllerRetro(vc)
     }

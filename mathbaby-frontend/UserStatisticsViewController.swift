@@ -33,7 +33,7 @@ class UserStatisticsViewController: GameTypeViewController {
             lbStatistics.text = ""
         } else if Singleton.isUserStatisticsAvailableForGametype(gametype) {
             if let percentile = Singleton.getPercentileForGametype(gametype) {
-                lbStatistics.text = "\(percentile)"
+                lbStatistics.text = percentile.formatString(".1")
             } else {
                 lbStatistics.text = "loading."
             }

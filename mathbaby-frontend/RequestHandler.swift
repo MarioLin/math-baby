@@ -68,10 +68,7 @@ class RequestHandler {
             if error == nil {
                 // this cast should always succeed
                 if let json=data as? [String:AnyObject] {
-                    if json["errCode"] as! Int == 0 {
-                        return callback(json)
-                    }
-                    return DLog("POST \(suburl) -> json = \(json)")
+                    return json["errCode"] as! Int == 0 ? callback(json) : DLog("POST \(suburl) -> json = \(json)")
                 }
             }
             return DLog("POST \(suburl) -> \(error!)")
