@@ -209,6 +209,7 @@ class GamePlayViewController: BaseViewController {
     */
     func updateGameTimerGraphics() {
         lbGametime.text = gameTime.formatString(".1")
+        lbGametime.textColor = UIColor.blackColor()
         if gameTime < 10.0 {
             lbGametime.textColor = UIColor.redColor()
         }

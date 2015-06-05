@@ -25,15 +25,16 @@ class GameResultViewController: BaseViewController {
         var scoreText = UILabel(frame: CGRectMake(0, self.view.frame.height/3-40, self.view.frame.width, 50))
         scoreText.text = "Your Score is:"
         scoreText.textAlignment = NSTextAlignment.Center
-        scoreText.font = UIFont(name: "Courier", size: 30)
+        scoreText.font = UIFont.systemFontStandard
+        scoreText.font = scoreText.font.fontWithSize(30)
         self.view.addSubview(scoreText)
-    }
-    override func viewWillAppear(animated: Bool) {
         var score = UILabel(frame:CGRectMake(0, self.view.frame.height/3, self.view.frame.width, self.view.frame.height/8))
         score.text = String(gameResult)
         score.textAlignment = NSTextAlignment.Center
-        score.font = UIFont(name: "Courier", size: self.view.frame.height/8)
+        score.font = UIFont.systemFontStandard
+        score.font = score.font.fontWithSize(self.view.frame.height/8)
         score.adjustsFontSizeToFitWidth = true
         self.view.addSubview(score)
     }
+
 }
