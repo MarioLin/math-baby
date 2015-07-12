@@ -207,7 +207,7 @@ class GamePlayViewController: BaseViewController {
         This is called at each timer update
         All real time graphics update should be done here
     */
-    func updateGameTimerGraphics() {
+    func updateGameTimerGraphics() { //
         lbGametime.text = gameTime.formatString(".1")
         lbGametime.textColor = UIColor.blackColor()
         if gameTime < 10.0 {
