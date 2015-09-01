@@ -37,6 +37,15 @@ enum Gametype : Int {
         }
         return arr[randomNumberMod(arr.count)]
     }
+    
+    static func allGameTypeSelected (var gametype:Int) -> Bool {
+        for key in [Gametype.kGTAdd, Gametype.kGTSub, Gametype.kGTMul, Gametype.kGTDiv] {
+            if !(gametype % key.rawValue == 0) {
+                return false
+            }
+        }
+        return true
+    }
 }
 
 func randomNumberMod(num:Int) -> Int {

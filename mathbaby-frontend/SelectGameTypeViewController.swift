@@ -11,8 +11,10 @@ import UIKit
 class SelectGameTypeViewController: GameTypeViewController {
     
     @IBAction func btnRightArrowTouchDown (AnyObject) {
+        var vc = Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController) as! GamePlayViewController
+        vc.dualMode = self.dualModeSwitch.on
         if Gametype.isValidGametype(Singleton.gametype) {
-            self.navigationController?.pushViewControllerRetro(Singleton.instantiateViewControllerWithIdentifier(Constants.kViewControllerIdentifier.GamePlayViewController))
+            self.navigationController?.pushViewControllerRetro(vc)
         }
         
     }

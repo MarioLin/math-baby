@@ -59,6 +59,7 @@ class GamePlayViewController: BaseViewController {
     var gameTime = 60.0
     var gameTimer:NSTimer?
     var score = 0
+    var dualMode = false
     
     var topYForButtonSet:CGFloat!
     var correctAnswer:String?
@@ -67,6 +68,7 @@ class GamePlayViewController: BaseViewController {
 
     private var btnSetAnswers:UIQuestionSet!
     private var btnSetAnimations:UIQuestionSet!
+    private var operationQuestion = false;
     @IBOutlet weak var lbGametime:UILabel!
     @IBOutlet weak var lbScore:UILabel!
     
@@ -123,6 +125,14 @@ class GamePlayViewController: BaseViewController {
         This function will update self.correctAnswer as well
     */
     func setUpNewQuestion (animated: Bool) {
+        
+        // Operation question. Random with 50% chance
+        if (self.dualMode && Int(arc4random_uniform(2)) % 2 == 0) {
+            self.operationQuestion = true;
+        }
+        else {
+            self.operationQuestion = false;
+        }
         self.animationOngoing = true
         let animationTime = animated ? 0.25 : 0
         btnSetAnimations.copyState(btnSetAnswers)
@@ -156,8 +166,19 @@ class GamePlayViewController: BaseViewController {
         if question[1] == "*" {
             question = question.stringByReplacingOccurrencesOfString("*", withString: "x", options: NSStringCompareOptions.LiteralSearch, range: nil)
         }
-        question = question[0] + " " + question[1] + " " + question[2]
+        if (self.operationQuestion == true) {
+            question = question[0] + " " + "_" + " " + question[2]
+
+        }
+        else {
+            question = question[0] + " " + question[1] + " " + question[2]
+        }
         return question
+    }
+    
+    /// TODO: Implement
+    func getPossibleOperatorAnswer(var question: String) -> [NSNumber] {
+        return [1,2 ,3];
     }
     
     /* 

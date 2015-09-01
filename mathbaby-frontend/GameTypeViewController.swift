@@ -11,6 +11,7 @@ import UIKit
 
 class GameTypeViewController: BaseViewController {
     
+    @IBOutlet var dualModeSwitch: UISwitch!
     @IBOutlet var btnRight: UIButton!
     @IBOutlet var btnCollection:[UIButton]!
     var btnToTick = [UIButton:UILabel]()
@@ -24,7 +25,8 @@ class GameTypeViewController: BaseViewController {
             btnToTick[button] = tickLabel
             button.addSubview(tickLabel)
         }
-        updateButtonState ()
+        dualModeSwitch.setOn(false, animated: false)
+        updateButtonState()
     }
     
     @IBAction func btnBackTouchDown (AnyObject) {
@@ -53,6 +55,14 @@ class GameTypeViewController: BaseViewController {
                 btnToTick[button]?.hidden = true
             }
 
+        }
+        
+        //switch enabled if all game type selected
+        if Gametype.allGameTypeSelected(gametype) {
+            dualModeSwitch.enabled = true
+        }
+        else {
+            dualModeSwitch.enabled = false
         }
         if Gametype.isValidGametype(gametype) {
             btnRight?.alpha = 1.0

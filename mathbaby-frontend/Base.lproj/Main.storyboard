@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mV6-nN-VOB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mV6-nN-VOB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -78,7 +78,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-JT-fBe">
-                                <rect key="frame" x="260" y="16" width="80" height="27"/>
+                                <rect key="frame" x="260" y="20" width="80" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="NaQ-ub-uCS"/>
@@ -102,6 +102,20 @@
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="GqQ-t9-NXO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqa-o3-0r1">
+                                <rect key="frame" x="340" y="368" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="➡️">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnRightArrowTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="QXi-2u-yl9"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="635-4X-KXF">
+                                <rect key="frame" x="276" y="90" width="51" height="31"/>
+                            </switch>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-YY-6s8">
                                 <rect key="frame" x="190" y="148" width="70" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -117,49 +131,68 @@
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="JfE-D9-3qX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqa-o3-0r1">
-                                <rect key="frame" x="340" y="368" width="70" height="70"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="➡️">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnRightArrowTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="QXi-2u-yl9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="Gqa-o3-0r1" secondAttribute="height" id="1ba-eh-1Vk"/>
                             <constraint firstItem="cbX-YY-6s8" firstAttribute="centerX" secondItem="SNW-u1-Bov" secondAttribute="centerX" id="3IU-ZC-Gpa"/>
+                            <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="3eb-cE-GD1"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="width" secondItem="g8z-5M-Fiz" secondAttribute="width" id="5D6-G6-fAp"/>
                             <constraint firstItem="SNW-u1-Bov" firstAttribute="centerX" secondItem="Zhb-aA-jRM" secondAttribute="centerX" id="6ZU-OJ-GdV"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="SNW-u1-Bov" secondAttribute="height" id="7Ix-XQ-tU9"/>
                             <constraint firstItem="xw5-s2-ugp" firstAttribute="centerX" secondItem="E3W-wZ-SgH" secondAttribute="centerX" id="9y6-4E-XAB"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="top" secondItem="cbX-YY-6s8" secondAttribute="top" constant="-58" id="A0P-s2-58g"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="width" secondItem="E3W-wZ-SgH" secondAttribute="height" multiplier="7:10" id="BRH-qy-DhW"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="trailing" secondItem="cbX-YY-6s8" secondAttribute="trailing" constant="65" id="C2h-dv-sQj"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="centerX" secondItem="cbX-YY-6s8" secondAttribute="centerX" constant="75.5" id="Cz7-F1-y6S"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="cbX-YY-6s8" secondAttribute="width" id="E7V-Ao-DBE"/>
+                            <constraint firstItem="m9W-JQ-oaj" firstAttribute="top" secondItem="635-4X-KXF" secondAttribute="bottom" constant="479" id="ETG-Lz-iDB"/>
                             <constraint firstAttribute="centerX" secondItem="SdT-JT-fBe" secondAttribute="centerX" id="G5a-OU-uZh"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="centerY" secondItem="Gqa-o3-0r1" secondAttribute="centerY" id="GvQ-aS-Qza"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="E3W-wZ-SgH" secondAttribute="height" id="Lmd-ph-bwM"/>
                             <constraint firstItem="xw5-s2-ugp" firstAttribute="centerX" secondItem="Gqa-o3-0r1" secondAttribute="centerX" id="Nx4-yy-Rx9"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="leading" secondItem="E3W-wZ-SgH" secondAttribute="leading" constant="-64" id="OGI-Bi-7e1"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="centerX" secondItem="cbX-YY-6s8" secondAttribute="centerX" constant="75.5" id="TiD-uq-51X"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="Zhb-aA-jRM" secondAttribute="width" id="UmF-Yv-b2w"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="SNW-u1-Bov" secondAttribute="width" id="V1S-Co-2lH"/>
+                            <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="Xau-I8-iM5"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="xw5-s2-ugp" secondAttribute="height" id="ZpG-w2-TlB"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="xw5-s2-ugp" secondAttribute="width" id="b51-E9-T3q"/>
                             <constraint firstAttribute="centerY" secondItem="SNW-u1-Bov" secondAttribute="centerY" constant="7" id="cf1-RL-KqI"/>
                             <constraint firstItem="xw5-s2-ugp" firstAttribute="centerY" secondItem="SNW-u1-Bov" secondAttribute="centerY" id="eZ3-hj-ssD"/>
                             <constraint firstItem="SqX-yD-rdi" firstAttribute="top" secondItem="SNW-u1-Bov" secondAttribute="bottom" id="egx-ag-i28"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="top" secondItem="SqX-yD-rdi" secondAttribute="bottom" id="fSW-bd-sPv"/>
+                            <constraint firstAttribute="centerY" secondItem="635-4X-KXF" secondAttribute="centerY" constant="212" id="gja-JO-RiM"/>
                             <constraint firstItem="kwX-rE-IFt" firstAttribute="top" secondItem="cbX-YY-6s8" secondAttribute="bottom" id="h8f-2p-anp"/>
                             <constraint firstItem="cbX-YY-6s8" firstAttribute="centerY" secondItem="E3W-wZ-SgH" secondAttribute="centerY" id="ie1-Az-KlZ"/>
                             <constraint firstItem="SNW-u1-Bov" firstAttribute="top" secondItem="kwX-rE-IFt" secondAttribute="bottom" id="kj2-nV-ddd"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="cbX-YY-6s8" secondAttribute="height" id="mzE-Xw-QkW"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="centerX" secondItem="E3W-wZ-SgH" secondAttribute="centerX" constant="-74.5" id="oKX-v9-8nP"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="centerX" secondItem="E3W-wZ-SgH" secondAttribute="centerX" constant="0.5" id="suT-pL-lsc"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="E3W-wZ-SgH" secondAttribute="width" id="umh-EL-XNw"/>
                             <constraint firstItem="E3W-wZ-SgH" firstAttribute="leading" secondItem="SdT-JT-fBe" secondAttribute="trailing" id="vYG-aB-hXM"/>
                             <constraint firstItem="SdT-JT-fBe" firstAttribute="leading" secondItem="cbX-YY-6s8" secondAttribute="trailing" id="vg0-P9-Yen"/>
+                            <constraint firstItem="635-4X-KXF" firstAttribute="top" secondItem="E3W-wZ-SgH" secondAttribute="top" constant="-58" id="zsd-dx-UmG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3eb-cE-GD1"/>
+                                <exclude reference="5D6-G6-fAp"/>
+                                <exclude reference="A0P-s2-58g"/>
+                                <exclude reference="BRH-qy-DhW"/>
+                                <exclude reference="C2h-dv-sQj"/>
+                                <exclude reference="Cz7-F1-y6S"/>
+                                <exclude reference="OGI-Bi-7e1"/>
+                                <exclude reference="Xau-I8-iM5"/>
+                                <exclude reference="gja-JO-RiM"/>
+                                <exclude reference="suT-pL-lsc"/>
+                                <exclude reference="zsd-dx-UmG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="btnRight" destination="Gqa-o3-0r1" id="2zw-43-9Pg"/>
+                        <outlet property="dualModeSwitch" destination="635-4X-KXF" id="A06-gx-kIT"/>
                         <outletCollection property="btnCollection" destination="cbX-YY-6s8" collectionClass="NSMutableArray" id="pbC-2x-NUG"/>
                         <outletCollection property="btnCollection" destination="E3W-wZ-SgH" collectionClass="NSMutableArray" id="kyP-DR-E8i"/>
                         <outletCollection property="btnCollection" destination="SNW-u1-Bov" collectionClass="NSMutableArray" id="gvk-o8-MZv"/>
