@@ -17,4 +17,11 @@ extension String {
     subscript (r: Range<Int>) -> String {
         return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
     }
+    
+    public func indexOfCharacter(char: Character) -> Int? {
+        if let idx = find(self, char) {
+            return distance(self.startIndex, idx)
+        }
+        return nil
+    }
 }

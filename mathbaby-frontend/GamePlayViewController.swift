@@ -184,7 +184,6 @@ class GamePlayViewController: BaseViewController {
     */
     func convertQuestionToDisplayFormat (var question:String) -> String {
         var answer = computeAnswerForQuestion(question + ".0")
-        
         println("answer is \(answer)")
         if question[1] == "*" {
             question = question.stringByReplacingOccurrencesOfString("*", withString: "x", options: NSStringCompareOptions.LiteralSearch, range: nil)
@@ -195,10 +194,11 @@ class GamePlayViewController: BaseViewController {
         println(questionAsArray)
         //FIXME: split using regex?
         if (self.operationQuestion == true) {
+            if contains(answer.stringValue, ".") {
+                answer = trimToTwoDigitsAfterDecimal(answer)!
+            }
             question = questionAsArray[0] + " " + "_" + " " + questionAsArray[1]
             question += " = " + answer.stringValue
-            println(answer)
-            println(question)
         }
         else {
             question = questionAsArray[0] + " " + operatorTarget + " " + questionAsArray[1]
@@ -308,7 +308,14 @@ class GamePlayViewController: BaseViewController {
     private func trimToTwoDigitsAfterDecimal(number: NSNumber) -> NSNumber? {
         var numAsString = number.stringValue
         // TODO: trim!
-        return nil
+        let dot : Character = "."
+        var indexOfDecimal = numAsString.indexOfCharacter(dot)!
+        if !(count(numAsString) <= indexOfDecimal + 2) {
+            numAsString = numAsString.substringToIndex(advance(numAsString.startIndex, indexOfDecimal+2))
+        }
+        var numValue = (numAsString as NSString).floatValue
+        var num = NSNumber(float : numValue)
+        return num
     }
 }
 

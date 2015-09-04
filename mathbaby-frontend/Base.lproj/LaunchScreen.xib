@@ -33,7 +33,7 @@
                     <rect key="frame" x="-4" y="642" width="32" height="136"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Math Baby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-ho-Z7y">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Math Baby" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-ho-Z7y">
                     <rect key="frame" x="316" y="46" width="280" height="87"/>
                     <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="40"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -120,6 +120,7 @@
                     <exclude reference="wM5-DX-LyT"/>
                     <exclude reference="whx-gB-6nS"/>
                     <exclude reference="yud-xg-Xbd"/>
+                    <exclude reference="z2W-Yv-auq"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="782" y="604"/>
