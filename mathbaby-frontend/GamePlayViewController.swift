@@ -86,6 +86,11 @@ class GamePlayViewController: BaseViewController {
         set up new game, everytime the view controller is loaded
     */
     override func viewWillAppear(animated: Bool) {
+        self.leftCornerImgView.removeFromSuperview()
+        self.rightCornerImgView.removeFromSuperview()
+        self.rightCornerLowerImgView.removeFromSuperview()
+        self.leftCornerLowerImgView.removeFromSuperview()
+
         gameTime = Constants.defaultValues.game.gameTime
         score = Constants.defaultValues.game.score
         updateGameTimerGraphics()
@@ -127,12 +132,7 @@ class GamePlayViewController: BaseViewController {
     func setUpNewQuestion (animated: Bool) {
         
         // Operation question. Random with 50% chance
-        if (self.dualMode && Int(arc4random_uniform(2)) % 2 == 0) {
-            self.operationQuestion = true;
-        }
-        else {
-            self.operationQuestion = false;
-        }
+        self.operationQuestion = (self.dualMode && Int(arc4random_uniform(2)) % 2 == 0) ? true: false
         self.animationOngoing = true
         let animationTime = animated ? 0.25 : 0
         btnSetAnimations.copyState(btnSetAnswers)
@@ -140,13 +140,30 @@ class GamePlayViewController: BaseViewController {
         btnSetAnswers.hidden = true
         let newQuestion = self.getNewQuestion()
         self.btnSetAnswers.question.text = convertQuestionToDisplayFormat(newQuestion)
+        self.btnSetAnswers.question.font = UIFont(name: "AmericanTypewriter-Bold", size: 50)
+        self.btnSetAnswers.question.adjustsFontSizeToFitWidth = true
+        
         let answers = self.getPossibleAnswersForQuestion(newQuestion)
-        var answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
+        
+        var answersInString = [String]()
+        
+        // Numbered answers
+        if !(self.operationQuestion) {
+            answersInString = newQuestion[1] == "/" ? answers.map{$0.doubleValue.formatString(".2")} : answers.map{$0.stringValue}
+        }
+            
+        // Operation answers
+        else {
+            answersInString = self.getPossibleOperatorAnswer(newQuestion)
+        }
         self.correctAnswer = answersInString[0]
+        println(answersInString)
+        println(newQuestion)
         answersInString.shuffle()
         for buttonIdx in 0...self.btnSetAnswers.buttons.count-1 {
             self.btnSetAnswers.buttons[buttonIdx].setTitleColor(UIColor.darkTextColor(), forState: UIControlState.Normal)
             self.btnSetAnswers.buttons[buttonIdx].setTitle(answersInString[buttonIdx], forState: UIControlState.Normal)
+            self.btnSetAnswers.buttons[buttonIdx].titleLabel?.font = UIFont(name: "HelveticaNeue-UltraLight", size: 50)
         }
         self.btnSetAnswers.hidden = false
         UIView.animateWithDuration(animationTime, animations: {
@@ -162,23 +179,49 @@ class GamePlayViewController: BaseViewController {
         return String(randomNumberMod(9) + 1) + Gametype.randomGameType(Singleton.gametype) + String(randomNumberMod(9) + 1)
     }
     
+    /*
+        Converts the given question into a human readable format
+    */
     func convertQuestionToDisplayFormat (var question:String) -> String {
+        var answer = computeAnswerForQuestion(question + ".0")
+        
+        println("answer is \(answer)")
         if question[1] == "*" {
             question = question.stringByReplacingOccurrencesOfString("*", withString: "x", options: NSStringCompareOptions.LiteralSearch, range: nil)
         }
+        
+        let (indexOfOperator, operatorTarget) = self.getOperatorAndIndex(question)!
+        var questionAsArray = question.componentsSeparatedByString(operatorTarget)
+        println(questionAsArray)
+        //FIXME: split using regex?
         if (self.operationQuestion == true) {
-            question = question[0] + " " + "_" + " " + question[2]
-
+            question = questionAsArray[0] + " " + "_" + " " + questionAsArray[1]
+            question += " = " + answer.stringValue
+            println(answer)
+            println(question)
         }
         else {
-            question = question[0] + " " + question[1] + " " + question[2]
+            question = questionAsArray[0] + " " + operatorTarget + " " + questionAsArray[1]
         }
         return question
     }
     
-    /// TODO: Implement
-    func getPossibleOperatorAnswer(var question: String) -> [NSNumber] {
-        return [1,2 ,3];
+    /*
+        Gets the possible operator answers. The correct answer is at position 0 in the returned array
+    */
+    func getPossibleOperatorAnswer(var question: String) -> [String] {
+        let allOperations = ["+", "/", "-", "x"];
+        var possibleAnswers = [String]()
+        possibleAnswers.append(question[1])
+        if possibleAnswers[0] == "*" {
+            possibleAnswers[0] = "x"
+        }
+        for operation in allOperations {
+            if !contains(possibleAnswers, operation) {
+                possibleAnswers.append(operation)
+            }
+        }
+        return possibleAnswers
     }
     
     /* 
@@ -250,4 +293,25 @@ class GamePlayViewController: BaseViewController {
         self.navigationController?.pushViewControllerRetro(vc)
     }
     
+    private func getOperatorAndIndex(question: String) -> (Int, String)? {
+        let allOperations = ["+", "/", "-", "x"];
+        var index = 0;
+        for letter in question {
+            if contains(allOperations, "\(letter)") {
+                return (index, "\(letter)")
+            }
+            index++
+        }
+        return nil
+    }
+    
+    private func trimToTwoDigitsAfterDecimal(number: NSNumber) -> NSNumber? {
+        var numAsString = number.stringValue
+        // TODO: trim!
+        return nil
+    }
 }
+
+
+
+extension String: SequenceType {}

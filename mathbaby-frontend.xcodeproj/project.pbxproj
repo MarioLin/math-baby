@@ -35,6 +35,7 @@
 		77E1FD6F1B0F30A900DA3B65 /* GameTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1FD6E1B0F30A900DA3B65 /* GameTypeViewController.swift */; };
 		77E1FD711B0F371900DA3B65 /* StatisticsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E1FD701B0F371900DA3B65 /* StatisticsMenuViewController.swift */; };
 		77E701DA1B16FC4800BA71BA /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E701D91B16FC4800BA71BA /* NumberExtension.swift */; };
+		785123161B9A1CF20097F204 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785123151B9A1CF20097F204 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		77E1FD6E1B0F30A900DA3B65 /* GameTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTypeViewController.swift; sourceTree = "<group>"; };
 		77E1FD701B0F371900DA3B65 /* StatisticsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsMenuViewController.swift; sourceTree = "<group>"; };
 		77E701D91B16FC4800BA71BA /* NumberExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
+		785123151B9A1CF20097F204 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		DAD2BABE7E8C6AB736906A4C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC41ECE0330E2D92CD2AE03F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,6 +276,7 @@
 				77C99D001B17F3C100047FB0 /* StringExtension.swift */,
 				77CFE2B51B1332F500B49E17 /* NSNotificationCenterExtension.swift */,
 				776BEBE41B0D46B30050BBD5 /* UINavigationControllerExtension.swift */,
+				785123151B9A1CF20097F204 /* UIImageExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -341,7 +344,7 @@
 				TargetAttributes = {
 					77319AC41AF6CE6900C8CC09 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 57BZLL75TW;
+						DevelopmentTeam = BZWKCXTTT2;
 					};
 					77319ADC1AF6CE6900C8CC09 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -464,6 +467,7 @@
 				77319ACE1AF6CE6900C8CC09 /* mathbaby_frontend.xcdatamodeld in Sources */,
 				77C99D011B17F3C100047FB0 /* StringExtension.swift in Sources */,
 				7773EF5F1B11BB2900F84906 /* UserStatisticsViewController.swift in Sources */,
+				785123161B9A1CF20097F204 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,17 +48,6 @@
                                     <action selector="btnBackTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="fgg-Y5-myD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xw5-s2-ugp">
-                                <rect key="frame" x="340" y="258" width="70" height="70"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="➗">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="sn1-Ud-40W"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNW-u1-Bov">
                                 <rect key="frame" x="190" y="258" width="70" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -95,9 +84,7 @@
                                 <rect key="frame" x="340" y="148" width="70" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <state key="normal" title="➖">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="➖"/>
                                 <connections>
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="GqQ-t9-NXO"/>
                                 </connections>
@@ -113,9 +100,6 @@
                                     <action selector="btnRightArrowTouchDown:" destination="wcG-pz-AgD" eventType="touchDown" id="QXi-2u-yl9"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="635-4X-KXF">
-                                <rect key="frame" x="276" y="90" width="51" height="31"/>
-                            </switch>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-YY-6s8">
                                 <rect key="frame" x="190" y="148" width="70" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -125,10 +109,25 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <state key="normal" title="➕">
+                                    <color key="titleColor" red="0.53984912018896603" green="1" blue="0.065719686277120548" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="JfE-D9-3qX"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="635-4X-KXF">
+                                <rect key="frame" x="276" y="99" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xw5-s2-ugp">
+                                <rect key="frame" x="340" y="258" width="70" height="70"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <state key="normal" title="➗">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnOperationClicked:" destination="wcG-pz-AgD" eventType="touchDown" id="sn1-Ud-40W"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,9 +138,12 @@
                             <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="3eb-cE-GD1"/>
                             <constraint firstItem="635-4X-KXF" firstAttribute="width" secondItem="g8z-5M-Fiz" secondAttribute="width" id="5D6-G6-fAp"/>
                             <constraint firstItem="SNW-u1-Bov" firstAttribute="centerX" secondItem="Zhb-aA-jRM" secondAttribute="centerX" id="6ZU-OJ-GdV"/>
+                            <constraint firstAttribute="centerY" secondItem="635-4X-KXF" secondAttribute="centerY" constant="194.5" id="770-Ko-5h1"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="SNW-u1-Bov" secondAttribute="height" id="7Ix-XQ-tU9"/>
+                            <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="8ZH-ax-iuh"/>
                             <constraint firstItem="xw5-s2-ugp" firstAttribute="centerX" secondItem="E3W-wZ-SgH" secondAttribute="centerX" id="9y6-4E-XAB"/>
                             <constraint firstItem="635-4X-KXF" firstAttribute="top" secondItem="cbX-YY-6s8" secondAttribute="top" constant="-58" id="A0P-s2-58g"/>
+                            <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="BDK-sI-WqX"/>
                             <constraint firstItem="635-4X-KXF" firstAttribute="width" secondItem="E3W-wZ-SgH" secondAttribute="height" multiplier="7:10" id="BRH-qy-DhW"/>
                             <constraint firstItem="635-4X-KXF" firstAttribute="trailing" secondItem="cbX-YY-6s8" secondAttribute="trailing" constant="65" id="C2h-dv-sQj"/>
                             <constraint firstItem="635-4X-KXF" firstAttribute="centerX" secondItem="cbX-YY-6s8" secondAttribute="centerX" constant="75.5" id="Cz7-F1-y6S"/>
@@ -157,6 +159,7 @@
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="SNW-u1-Bov" secondAttribute="width" id="V1S-Co-2lH"/>
                             <constraint firstAttribute="centerX" secondItem="635-4X-KXF" secondAttribute="centerX" constant="-0.5" id="Xau-I8-iM5"/>
                             <constraint firstItem="Zhb-aA-jRM" firstAttribute="height" secondItem="xw5-s2-ugp" secondAttribute="height" id="ZpG-w2-TlB"/>
+                            <constraint firstAttribute="centerY" secondItem="635-4X-KXF" secondAttribute="centerY" constant="185.5" id="aQV-5I-ROU"/>
                             <constraint firstItem="Gqa-o3-0r1" firstAttribute="width" secondItem="xw5-s2-ugp" secondAttribute="width" id="b51-E9-T3q"/>
                             <constraint firstAttribute="centerY" secondItem="SNW-u1-Bov" secondAttribute="centerY" constant="7" id="cf1-RL-KqI"/>
                             <constraint firstItem="xw5-s2-ugp" firstAttribute="centerY" secondItem="SNW-u1-Bov" secondAttribute="centerY" id="eZ3-hj-ssD"/>
@@ -178,7 +181,10 @@
                             <mask key="constraints">
                                 <exclude reference="3eb-cE-GD1"/>
                                 <exclude reference="5D6-G6-fAp"/>
+                                <exclude reference="770-Ko-5h1"/>
+                                <exclude reference="8ZH-ax-iuh"/>
                                 <exclude reference="A0P-s2-58g"/>
+                                <exclude reference="BDK-sI-WqX"/>
                                 <exclude reference="BRH-qy-DhW"/>
                                 <exclude reference="C2h-dv-sQj"/>
                                 <exclude reference="Cz7-F1-y6S"/>
@@ -187,6 +193,7 @@
                                 <exclude reference="gja-JO-RiM"/>
                                 <exclude reference="suT-pL-lsc"/>
                                 <exclude reference="zsd-dx-UmG"/>
+                                <exclude reference="ETG-Lz-iDB"/>
                             </mask>
                         </variation>
                     </view>
